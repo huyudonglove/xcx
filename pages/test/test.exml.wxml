@@ -1,0 +1,6 @@
+<!--pages/test/test.exml.wxml-->
+<text>777777777777</text>
+<view>
+  11111
+  <button bindtap="getSome">5555</button>
+</view>
