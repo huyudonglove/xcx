@@ -1,0 +1,6 @@
+/* pages/myOrder/myOrder.wxss */
+.list{
+  background: #ddd;
+  height: 260rpx;
+  margin-bottom: 10rpx;
+}

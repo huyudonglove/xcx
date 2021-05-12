@@ -1,5 +1,29 @@
 <!--index.wxml-->
-<view class="container">
+<view wx:if="{{current==1}}">
+  <view class="con">
+    <view >
+        <input  placeholder="请输入关键字" />
+    </view>
+    <view class="bor" wx:for="{{listData}}" wx:key="unique" data-index="{{index}}" bindtap="goToDetail">
+      {{item}}
+    </view>  
+</view>
+</view>
+<view wx:if="{{current==2}}">
+    <include src="../home/home.wxml" />
+</view>
+<!-- <button bindtap="goToOrder">11111</button> -->
+<view class="btm">
+      <view class="btm-s" style="border-right:1px solid #ddd;" bindtap="goTo" data-index="1">首页</view>
+      <view class="btm-s" bindtap="goTo" data-index="2" >我的</view>
+</view>
+<view class='middle-box' wx:if="{{!hasUserInfo}}">
+    <view class="boxH">
+      <view class='title'>点击确认按钮，确认授权</view>
+      <button class='btn'  bindtap='getUserProfile'>确认授权</button>
+    </view>
+</view>
+<!-- <view class="container">
   <view class="userinfo">
     <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
       <view class="userinfo-avatar" bindtap="bindViewTap">
@@ -14,10 +38,11 @@
     </block>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text class="userinfo-nickname">{{userInfo.nickName}}11111111</text>
+      <button>1111111</button>
     </block>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto">{{motto}}1111111</text>
   </view>
-</view>
+</view> -->

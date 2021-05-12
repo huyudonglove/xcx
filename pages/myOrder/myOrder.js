@@ -1,12 +1,11 @@
-// pages/test/test.exml.js
-const api = require('../../utils/api');
+// pages/myOrder/myOrder.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      order:[1,2,3,4,5,6]
   },
 
   /**
@@ -63,14 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  goTo(){
-    wx.navigateTo({
-      url: '../test/test'
-    })
-  },
-  getSome(){
-    console.log(api)
-    api.getData();
   }
 })

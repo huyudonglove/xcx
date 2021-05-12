@@ -4,24 +4,28 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World1111111111',
+    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
+    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
+    listData:[1,2,3,4,5],
+    current:1
   },
   // 事件处理函数
   bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    console.log(this.data)
   },
   onLoad() {
+    //console.log(getCurrentPages())
     if (wx.getUserProfile) {
+     // console.log(777777)
       this.setData({
         canIUseGetUserProfile: true
-      })
+      });
+      //this.goTo()
+      //console.log(this);
     }
   },
   getUserProfile(e) {
@@ -34,6 +38,9 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        console.log(this.data);
+        wx.setStorageSync('userInfo', res.userInfo);
+        wx.setStorageSync('hasUserInfo', true);
       }
     })
   },
@@ -43,6 +50,33 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  goTo(e){
+    console.log(this.data.userInfo)
+    var key=e.currentTarget.dataset.index;
+    console.log(this)
+    if(key==1){
+      this.setData({
+        current:1
+       })
+    }
+     if(key==2){
+      this.setData({
+        current:2
+       })
+     }
+  },
+  goToOrder(){
+    wx.navigateTo({
+      url: '../myOrder/myOrder'
+    })
+  },
+  goToDetail(e){
+    console.log(e.currentTarget.dataset.index);
+    var b=e.currentTarget.dataset.index;
+    wx.navigateTo({
+      url: `../detail/detail?id=${b}`,
     })
   }
 })

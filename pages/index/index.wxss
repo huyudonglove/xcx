@@ -1,4 +1,5 @@
 /**index.wxss**/
+
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -16,4 +17,63 @@
 
 .usermotto {
   margin-top: 200px;
+}
+.con{
+  justify-content: space-between;
+  background: #ddddddb6;
+  overflow:auto;
+  position: absolute;
+  height:100%;
+  width: 100%;
+}
+.bor{
+  border:1px solid red;
+  width: 48%;
+  min-height:20%;
+  float: left;
+  margin:.3rem .1rem;
+}
+.btm{
+  position: fixed;
+  bottom:2rem;
+  width: 100%;
+  height: 6%;
+  border:1px solid #ddd;
+}
+.btm-s{
+  display: inline-block;
+  width: 49%;
+  height: 100%;
+  text-align:center; 
+  line-height: 2.5rem;
+}
+.mylist{
+  background: #aaa;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.middle-box{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,.3);
+  z-index: 1000;
+  text-align:center;
+}
+.boxH{
+  position: relative;
+  left:22%;
+  top:30%;
+  width: 60%;
+  height: 15%;
+  background: #fff;
+  border-radius: 3%;
+}
+.title{
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.btn{
+  background: #ddd;
+  
 }
