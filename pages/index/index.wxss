@@ -13,6 +13,8 @@
   height: 128rpx;
   margin: 20rpx;
   border-radius: 50%;
+  float: left;
+  margin-top:60rpx
 }
 
 .usermotto {
@@ -20,43 +22,56 @@
 }
 .con{
   justify-content: space-between;
-  background: #ddddddb6;
-  overflow:auto;
+  background: rgb(247,247,247);
+  overflow-x:hidden;
   position: absolute;
   height:100%;
   width: 100%;
+  padding-bottom:100rpx;
 }
 .bor{
-  border:1px solid red;
-  width: 48%;
-  min-height:20%;
+  border:1px solid #ddd;
+  width: 46%;
+  min-height:30%;
   float: left;
-  margin:.3rem .1rem;
+  margin:.3rem .3rem;
+  border-radius: 5%;
+  background:#fff;
+  
 }
 .btm{
   position: fixed;
-  bottom:2rem;
+  bottom:0;
   width: 100%;
-  height: 6%;
-  border:1px solid #ddd;
+  height: 100rpx;
+  line-height: 100rpx;
+  border:1px solid #FFFFFF;
+  z-index: 10;
+  background: white;
 }
 .btm-s{
   display: inline-block;
   width: 49%;
   height: 100%;
   text-align:center; 
-  line-height: 2.5rem;
+  line-height: 50rpx;
 }
 .mylist{
-  background: #aaa;
-  height: 60rpx;
+  height: 300rpx;
   line-height: 60rpx;
+  position: relative;
+  top:-10rpx;
+  border-radius: 3% 3% 0 0;
+  padding:20rpx;
+  border:1px solid #ddd;
+  background:white;
+  overflow: hidden;
 }
 .middle-box{
   position: fixed;
   width: 100%;
   height: 100%;
-  background:rgba(0,0,0,.3);
+  background:rgba(0,0,0,.5);
   z-index: 1000;
   text-align:center;
 }
@@ -75,5 +90,93 @@
 }
 .btn{
   background: #ddd;
+}
+.imgC{
+  width: 100%;
+  height: 300rpx;
+  border-radius: 5% 5% 0 0;
+}
+.titleC{
+  width: 100%;
+  height: 80rpx;
+  font-size: 35rpx;
+  line-height: 80rpx;
+  padding-left:20rpx;
+}
+.timeC{
+  height: 70rpx;
+  font-size: 22rpx;
+  color:#aaa;
+  line-height: 70rpx;
+  padding-left:10rpx;
+}
+.nameC{
+  float: left;
+  margin-top:90rpx;
+  margin-left:10rpx;
+  font-size:40rpx ;
+  color:#FFFFFF;
+}
+.homeC{
+  background:linear-gradient(to top right, #B30A05, #FF4643) ;
+}
+.myOrder{
+  height: 100rpx;
+  border-bottom:1px solid #ddd;
+  color:#0A0A0A;
+  line-height: 100rpx;
+  font-weight: bold;
+}
+.allC{
+  float: left;
+  width: 150rpx;
+  height: 150rpx;
+  border:1px solid #ddd;
+  margin-right: 15rpx;
+  margin-top:20rpx;
+  text-align: center;
+  border-radius: 5%;
   
+}
+.imgO{
+  width: 70rpx;
+  height: 70rpx;
+  margin-top: 20rpx;
+  display: block;
+  margin-left: 40rpx;
+}
+.textO{
+  font-size: 24rpx;
+}
+.imgF{
+  width: 30rpx;
+  height: 30rpx;
+  display: block;
+  margin-left: 166rpx;
+  margin-top:15rpx;
+}
+.ii{
+  background:rgba(255, 255, 255, 0);
+  width: 80%;
+  height: 100rpx;
+  margin-left: 120rpx;
+  margin-top: 15rpx;
+}
+.i1{
+  height: 100rpx;
+  background: white;
+  position: static;
+}
+.i1v1{
+  position: relative;
+  top:20rpx;
+  left: 20rpx;
+}
+.i1v2{
+  position: relative;
+  top:-84rpx;
+}
+.ft{
+  font-size: 20rpx;
+  margin-top:-10rpx;
 }

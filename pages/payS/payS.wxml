@@ -1,0 +1,14 @@
+<!--pages/payS/payS.wxml-->
+<view class="paySv1">
+  <view class="paySv1v1">
+    <view class="p">
+      <icon class="icon-box-img" type="success" size="93"></icon>
+    </view>
+    <view class="p">
+      <text>支付成功</text>
+    </view>
+  </view>
+  <view class="paySv1v2">
+    <button class="paySb" bindtap="goBack">返回首页</button>
+  </view>
+</view>

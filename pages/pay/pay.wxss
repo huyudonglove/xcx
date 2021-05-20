@@ -1,1 +1,99 @@
 /* pages/pay/pay.wxss */
+.pay1{
+  height: 150rpx;
+  background:#F2F2F2;
+  line-height: 150rpx;
+  
+}
+.pay2{
+  height: 100rpx;
+
+}
+.pc1{
+  height: 40rpx;
+  background:#F2F2F2;
+}
+.pay3{
+  height: 400rpx;
+
+  padding: 10rpx;
+}
+.pay4{
+  position: fixed;
+  width: 100%;
+  height: 120rpx;
+  border-top:1px solid #ddd;
+  bottom:0;
+}
+.imgF{
+  display: block;
+  width: 90rpx;
+  height: 90rpx;
+  display: block;
+  border-radius: 50%;
+  margin-top: 30rpx;
+}
+.pay1v{
+  float: left;
+  margin-left: 30rpx;
+}
+.pay1v2{
+  float: right;
+  margin-right: 30rpx;
+}
+.pay2v1{
+  float: left;
+  margin-top: 30rpx;
+  margin-left: 20rpx;
+}
+.payInputt{
+  width: 400rpx;
+}
+.pay3v1{
+  height: 250rpx;
+  border-bottom: 1px solid #F2F2F2;
+}
+.pay3v2{
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.pay3v1v{
+  float: left;
+  min-width: 30%;
+  height: 100%;
+  padding-left: 10rpx;
+}
+.pay4v1{
+  float: left;
+  height: 100%;
+  min-width:200rpx ;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+.pay4v2{
+  float: right;
+  height: 100%;
+  min-width: 200rpx;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+}
+.pay4b{
+  background:#F78520 ;
+  color:#FFFFFF;
+}
+.imgPay{
+  width: 100%;
+  height: 90%;
+}
+.name{
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 50rpx;
+}
+.price{
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.color{
+  color: rgb(183, 183, 183);
+}

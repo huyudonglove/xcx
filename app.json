@@ -4,12 +4,13 @@
     "pages/myOrder/myOrder",
     "pages/logs/logs",
     "pages/detail/detail",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/payS/payS"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "",
+    "navigationBarTitleText": "来打本",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",

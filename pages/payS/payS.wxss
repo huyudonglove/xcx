@@ -1,0 +1,27 @@
+/* pages/payS/payS.wxss */
+.paySv1{
+  position:absolute;
+  height: 100%;
+  width: 100%;
+}
+.paySv1v1{
+  position: relative;
+  left: 110rpx;
+  top:200rpx;
+  height: 350rpx;
+  width: 500rpx;
+}
+.paySv1v2{
+  position: relative;
+  top:110rpx;
+  left:0;
+  height: 100rpx;
+}
+.paySb{
+  background:#F78520 ;
+  color:#FFFFFF;
+}
+.p{
+  text-align: center;
+  margin-top:10rpx;
+}

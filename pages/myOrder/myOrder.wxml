@@ -1,4 +1,39 @@
 <!--pages/myOrder/myOrder.wxml-->
-<view class="list" wx:for="{{order}}" wx:key="unique">
-  {{item}}
+<view class="o1">
+    <view class="o1v" data-index="4" bindtap="change"><text class="{{current==4?'no':'yes'}}">全部</text></view>
+    <view class="o1v" data-index="3" bindtap="change"><text class="{{current==3?'no':'yes'}}">已退款</text></view>
+    <view class="o1v" data-index="1" bindtap="change"><text class="{{current==1?'no':'yes'}}">待开始</text> </view>
+    
+    <view class="o1v" data-index="2" bindtap="change"><text class="{{current==2?'no':'yes'}}">已完成</text></view>
 </view>
+<view class="o2">
+  <view class="list" wx:for="{{order}}" wx:key="unique">
+    <view class="o2v1">
+     <view class="ot1">{{item.playTime}}</view> 
+     <view class="ot2">
+        <view wx:if="{{item.orderStatus==0}}" style="width:100rpx;background:rgb(247,133,32)">待支付</view>
+        <view wx:if="{{item.orderStatus==1}}" style="width:100rpx;background:rgb(15,190,154)">待开始</view>
+        <view wx:if="{{item.orderStatus==2}}" style="width:100rpx;background:rgb(190,190,190)">已完成</view>
+        <view wx:if="{{item.orderStatus==3}}" style="width:100rpx;background:red">已退款</view>
+     </view>
+     
+    </view>
+    <view class="o2v2">
+      <view class="c">
+        <image src="{{item.sI}}" class="imgO"></image>
+      </view>
+      <view class="c">
+          <view class="c1">
+            {{item.storyTitle}}
+          </view>
+          <view>
+           <image src="../img/l.png" class="imgI"></image> <text class="ot">{{item.shopAddress}}</text>
+          </view>
+          <view>
+            <image src="../img/t.png" class="imgI"></image><text class="ot">{{item.customerPhone}}</text>
+          </view>
+      </view>
+    </view>
+  </view>
+</view>
+

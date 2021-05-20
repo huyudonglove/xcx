@@ -1,2 +1,36 @@
 <!--pages/pay/pay.wxml-->
-<text>pages/pay/pay.wxml</text>
+<view class="pay1">
+  <view class="pay1v"><image src="{{userInfo.avatarUrl}}" class="imgF"></image></view>
+  <view class="pay1v">{{userInfo.nickName}}</view>
+  <view class="pay1v2">{{month}}月{{day}}日</view>
+</view>
+<view class="pay2">
+  <view class="pay2v1"> 手机号
+    <text style="color:red">*</text>
+  </view>
+  <view class="pay2v1">
+    <input class="payInputt"  bindinput="getNumber" placeholder="请填写手机号"  maxlength="16" focus="true"/>
+  </view>
+</view>
+<view class="pc1"></view>
+<view class="pay3">
+  <view class="pay3v1">
+      <view class="pay3v1v">
+        <image src="{{detail.sI}}" class="imgPay"></image>
+      </view>
+      <view class="pay3v1v">
+        <view class="name">{{detail.storyTitle}}</view>
+        <view class="color"><image src="../img/t.png" style="width:28rpx;height:26rpx;margin-right:10rpx"></image>{{detail.playTime}}</view>
+        <view class="price">价格：<text style="color:red;font-size:40rpx;">{{detail.groupPrice}}元</text></view>
+      </view>
+  </view>
+  <view class="pay3v2 color">
+    <image src="../img/l.png" style="width:30rpx;height:30rpx;margin-right:10rpx"></image>{{detail.shopAddress}}
+  </view>
+</view>
+<view class="pay4">
+  <view class="pay4v1">总金额：<text style="color:red;font-size:40rpx;">{{detail.groupPrice}}元</text></view>
+  <view class="pay4v2">
+    <button  class="pay4b" bindtap="pay">提交订单</button>
+  </view>
+</view>

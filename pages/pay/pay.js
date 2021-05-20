@@ -1,18 +1,36 @@
 // pages/pay/pay.js
+var call=require("../../utils/api")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      userInfo:{},
+      detail:{},
+      month:'',
+      day:'',
+      phone:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.hideShareMenu() 
+    wx.hideShareMenu();
+    this.setData({
+      userInfo: wx.getStorageSync('userInfo') 
+    })
+   this.setData({
+     detail:wx.getStorageSync('detail') 
+   })
+   //console.log(new Date().getDate(),new Date().getMonth())
+   this.setData({
+     month:new Date().getMonth()+1
+   })
+   this.setData({
+     day:new Date().getDate()
+   })
   },
 
   /**
@@ -62,5 +80,63 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  getNumber(e){
+    var value=e.detail.value
+    this.setData({
+      phone:value
+    })
+  },
+  pay(){
+    let msg={
+    "nickName": "",
+    "avatarUrl": "",
+    "groupId": "",
+    "storyId": "",
+    "storyTitle": "",
+    "storyCoverImg": "",
+    "shopId":"",
+    "shopAddress": "",
+    "customerPhone": "",
+    "playTime": ""
+    };
+    let detail=this.data.detail;
+    msg.nickName=this.data.userInfo.nickName;
+    msg.avatarUrl=this.data.userInfo.avatarUrl;
+    msg.groupId=detail.groupId;
+    msg.storyId=detail.storyId;
+    msg.storyTitle=detail.storyTitle;
+    msg.storyCoverImg=detail.storyCoverImg;
+    msg.shopId=detail.shopId;
+    msg.shopAddress=detail.shopAddress;
+    msg.customerPhone=this.data.phone;
+    msg.playTime=detail.playTime;
+    console.log(msg,9999);
+    if(!msg.customerPhone){
+      wx.showToast({
+        title: '手机号码不为空',
+        icon: 'error',
+        duration: 2000
+      })
+      return
+    }
+    call.prePay(msg).then(v=>{
+      if(!v.code){
+        wx.navigateTo({
+          url: '../payS/payS',
+        })
+      }else{
+        wx.showToast({
+          title: '拼团失败',
+          icon: 'error',
+          duration: 2000
+        })
+      }
+     
+    }).catch(r=>{
+      wx.navigateTo({
+        url: '../payS/payS',
+      })
+    })
   }
 })

@@ -1,11 +1,13 @@
 // pages/detail/detail.js
+var call=require('../../utils/api')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      detailMsg:{},
+      allRole:[]
   },
 
   /**
@@ -13,6 +15,40 @@ Page({
    */
   onLoad: function (options) {
       console.log(this.options)
+      call.getStoryGroupingDetail(this.options.id).then(v=>{
+        let data=v.data;
+        //let url='http://10.10.30.143/files/';
+        let url='https://dev-mini.utopaxr.com:4430/images/';
+        if(data.shopLogoImg){
+          let a=data.shopLogoImg.split(',');
+          data.shopI=url+a[0]
+        }else{
+          data.shopI='../img/no.png';
+        }
+        if(data.storyCoverImg){
+          let a=data.storyCoverImg.split(",");
+          data.sI=url+a[0]
+        }else{
+          data.sI='../img/no.png'
+        } 
+        if(data.dmImg){
+          let a=data.dmImg.split(",");
+          data.dI=url+a[0]
+        }else{
+          data.dI='../img/nop.png'
+        }    
+        this.setData({
+          detailMsg:data
+        })
+        call.getPaidOrderList(this.options.id).then(v=>{
+         // console.log(this.data)
+         this.setData({
+           allRole:v.data
+         })
+         this.judgeRole();
+      })
+    });
+      
   },
 
   /**
@@ -93,8 +129,53 @@ Page({
     　　return shareObj
   },
   goToPay(){
+    wx.setStorageSync('detail', this.data.detailMsg)
     wx.navigateTo({
       url: '../pay/pay',
+    })
+  },
+  /**判断数组 */
+  judgeRole(){
+    /*1有人 0没人 2不可选*/
+    let allRoleC=this.data.allRole;
+    if(this.data.detailMsg.totalCount==this.data.detailMsg.boughtCount){
+      allRoleC.map(v=>{
+        v.type=1
+      })
+      if(allRoleC.length!=10){
+        let data=10-allRoleC.length;
+        for(let i=0;i<=data;i++){
+          allRoleC.push({type:2})
+        }
+      }
+    }
+    if(this.data.detailMsg.totalCount>this.data.detailMsg.boughtCount){
+      allRoleC.map(v=>{
+        v.type=1
+      })
+      let i1=this.data.detailMsg.totalCount-this.data.detailMsg.boughtCount;
+      for(let i =0;i<i1;i++){
+        allRoleC.push({type:0})
+      }
+      if(allRoleC.length!=10){
+        
+        let data=10-allRoleC.length;
+        console.log(data)
+        for(let i=0;i<=data;i++){
+          allRoleC.push({type:2})
+        }
+      }
+    }
+    console.log(allRoleC,789);
+    this.setData({
+      allRole:allRoleC
+    });
+  },
+  callMe(e){
+    console.log(e.currentTarget)
+    let phone=e.currentTarget.dataset.index;
+    wx.makePhoneCall({
+      phoneNumber: phone,
     })
   }
 })

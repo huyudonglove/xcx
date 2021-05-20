@@ -1,5 +1,6 @@
 // index.js
 // 获取应用实例
+var call=require("../../utils/api")
 const app = getApp()
 
 Page({
@@ -10,22 +11,40 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-    listData:[1,2,3,4,5],
-    current:1
+    listData:[],
+    current:1,
+    index:''
   },
   // 事件处理函数
   bindViewTap() {
     console.log(this.data)
   },
   onLoad() {
-    //console.log(getCurrentPages())
+   
+    call.listStoryGroup('').then(v=>{
+      let data=v.data;
+     // let url='http://10.10.30.143/files/'
+     let url='https://dev-mini.utopaxr.com:4430/images/';
+      data.map(r=>{
+        if(r.storyCoverImg){
+          let a=r.storyCoverImg.split(",");
+          r.sI=url+a[0]
+        }else{
+          r.sI='../img/no.png'
+        }
+      })
+      console.log(data,999999)
+      this.setData({
+        listData:data
+      })
+    }).catch(err=>{
+      
+    });
     if (wx.getUserProfile) {
      // console.log(777777)
       this.setData({
         canIUseGetUserProfile: true
       });
-      //this.goTo()
-      //console.log(this);
     }
   },
   getUserProfile(e) {
@@ -67,9 +86,11 @@ Page({
        })
      }
   },
-  goToOrder(){
+  goToOrder(e){
+    console.log(e)
+    let id=e.currentTarget.dataset.index
     wx.navigateTo({
-      url: '../myOrder/myOrder'
+      url: '../myOrder/myOrder?id='+id
     })
   },
   goToDetail(e){
@@ -78,5 +99,27 @@ Page({
     wx.navigateTo({
       url: `../detail/detail?id=${b}`,
     })
+  },
+  getInput(e){
+    var value=e.detail.value
+    call.listStoryGroup(value).then(v=>{
+      let data=v.data;
+     // let url='http://10.10.30.143/files/'
+     let url='https://dev-mini.utopaxr.com:4430/images/';
+      data.map(r=>{
+        if(r.storyCoverImg){
+          let a=r.storyCoverImg.split(",");
+          r.sI=url+a[0]
+        }else{
+          r.sI=null
+        }
+      })
+      console.log(data,999999)
+      this.setData({
+        listData:data
+      })
+    }).catch(err=>{
+      
+    });
   }
 })

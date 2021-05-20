@@ -1,6 +1,68 @@
 /* pages/myOrder/myOrder.wxss */
 .list{
-  background: #ddd;
+  background: rgb(255,255,255);
   height: 260rpx;
-  margin-bottom: 10rpx;
+  width: 95%;
+  border-radius: 2%;
+  margin-left: 20rpx;
+  padding-top:10rpx ;
+}
+.o1{
+  height: 100rpx;
+}
+.o1v{
+  display: inline-block;
+  height: 100rpx;
+  width: 25%;
+  text-align: center;
+  line-height: 100rpx;
+}
+.o2{
+  height: auto;
+  background:rgb(245,245,245);
+  padding-top:30rpx ;
+  padding-bottom:30rpx ;
+}
+.o2v1{
+  height: 60rpx;
+  padding-left:20rpx;
+
+}
+.o2v2{
+  height: 200rpx;
+}
+.c{
+  float: left;
+  min-width: 20%;
+  margin-left:30rpx ;
+}
+.imgO{
+  width: 150rpx;
+  height: 150rpx;
+  margin-left: 10rpx;
+  margin-top:10rpx;
+}
+.ot1{
+  float: left;
+}
+.ot2{
+  float: right;
+}
+.imgI{
+  width: 20rpx;
+  height: 23rpx;
+  margin-right: 10rpx;
+}
+.ot{
+  color: rgb(203, 203, 203);
+}
+.c1{
+  height: 80rpx;
+  font-size: 40rpx;
+}
+.no{
+  color: orange;
+}
+.yes{
+  color: black;
 }

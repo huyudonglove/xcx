@@ -1,21 +1,41 @@
 <!--index.wxml-->
-<view wx:if="{{current==1}}">
-  <view class="con">
-    <view >
-        <input  placeholder="请输入关键字" />
-    </view>
-    <view class="bor" wx:for="{{listData}}" wx:key="unique" data-index="{{index}}" bindtap="goToDetail">
-      {{item}}
-    </view>  
+<view style="position:absolute;height:100%;width:100%;background:rgb(247,247,247)">
+  <view wx:if="{{current==1}}">
+    <view class="con">
+      <view class="i1">
+          <image src="../img/input.png" style="width:700rpx;height:68rpx;" class="i1v1"></image>
+          <input  placeholder="请输入关键字" class="ii i1v2" bindinput="getInput"/>
+      </view>
+      <view class="bor" wx:for="{{listData}}" wx:key="unique" data-index="{{item.groupId}}" bindtap="goToDetail">
+        <view class="imgC">
+          <image src="{{item.sI}}" style="height:300rpx;width:100%;border-radius: 5% 5% 0 0;"></image>
+        </view>
+        <view class="titleC">
+          {{item.storyTitle}}
+        </view>
+        <view class="timeC">
+          {{item.playTime}} <text style="color:red;margin-left:10rpx;">{{item.groupPrice}}元</text>/位
+        </view>
+      </view>  
+  </view>
+  </view>
+  <view wx:if="{{current==2}}">
+      <include src="../home/home.wxml" />
+  </view>
 </view>
-</view>
-<view wx:if="{{current==2}}">
-    <include src="../home/home.wxml" />
-</view>
+
 <!-- <button bindtap="goToOrder">11111</button> -->
 <view class="btm">
-      <view class="btm-s" style="border-right:1px solid #ddd;" bindtap="goTo" data-index="1">首页</view>
-      <view class="btm-s" bindtap="goTo" data-index="2" >我的</view>
+      <view class="btm-s"  bindtap="goTo" data-index="1">
+        <image src="../img/h.png" class="imgF" wx:if="{{current==2}}"></image>
+        <image src="../img/6.png" class="imgF" wx:if="{{current==1}}"></image>
+        <text class="ft">首页</text> 
+      </view>
+      <view class="btm-s" bindtap="goTo" data-index="2" >
+        <image src="../img/wode.png" class="imgF" wx:if="{{current==1}}"></image>
+        <image src="../img/5.png" class="imgF" class="imgF" wx:if="{{current==2}}"></image>
+        <text class="ft">我的</text> 
+      </view>
 </view>
 <view class='middle-box' wx:if="{{!hasUserInfo}}">
     <view class="boxH">

@@ -1,11 +1,33 @@
 <!--pages/home/home.wxml-->
-<view>我的</view>
-<view>
-  <view class="userinfo-avatar">
+<view class="homeC" style="height:250rpx;">
+  <view class="userinfo-avatar" >
     <open-data  type="userAvatarUrl"></open-data>
   </view>
-    <open-data type="userNickName"></open-data>
+  <view class="nameC">
+     <open-data type="userNickName"></open-data>
+  </view>
+   
 </view>
-<view class="mylist" bindtap="goToOrder">
-  我的订单
+<view class="mylist" >
+  <view class="myOrder">
+    我的订单
+  </view>
+  <view>
+    <view class="allC" data-index="4" bindtap="goToOrder">
+      <image src="../img/4.png" class="imgO"></image>
+      <text class="textO">全部订单</text>
+    </view>
+    <view class="allC" data-index="3" bindtap="goToOrder">
+      <image src="../img/1.png" class="imgO"></image>
+      <text class="textO">已退款</text>
+    </view>
+    <view class="allC" data-index="1" bindtap="goToOrder">
+      <image src="../img/2.png" class="imgO"></image>
+      <text class="textO">待开始</text>
+    </view>
+    <view class="allC" data-index="2" bindtap="goToOrder">
+      <image src="../img/3.png" class="imgO"></image>
+      <text class="textO">已完成</text>
+    </view>
+  </view>
 </view>
