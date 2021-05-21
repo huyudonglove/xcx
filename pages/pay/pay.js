@@ -10,7 +10,8 @@ Page({
       detail:{},
       month:'',
       day:'',
-      phone:''
+      phone:'',
+      onOff:true
   },
 
   /**
@@ -120,7 +121,13 @@ Page({
       })
       return
     }
+    this.setData({
+      onOff:false
+    })
     call.prePay(msg).then(v=>{
+      this.setData({
+        onOff:true
+      })
       if(!v.code){
         wx.navigateTo({
           url: '../payS/payS',

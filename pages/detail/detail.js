@@ -16,6 +16,9 @@ Page({
   onLoad: function (options) {
       console.log(this.options)
       call.getStoryGroupingDetail(this.options.id).then(v=>{
+        wx.hideLoading();
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh();
         let data=v.data;
         //let url='http://10.10.30.143/files/';
         let url='https://dev-mini.utopaxr.com:4430/images/';
@@ -83,7 +86,16 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onRefresh();
+  },
+  onRefresh(){
+    //在当前页面显示导航条加载动画
+    wx.showNavigationBarLoading(); 
+    //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+    wx.showLoading({
+      title: '刷新中...',
+    })
+    this.onLoad();
   },
 
   /**

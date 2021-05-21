@@ -113,7 +113,7 @@
   height: 250rpx;
   width: 360rpx;
   left: 200rpx;
-  top:-75rpx;
+  top:-100rpx;
 }
 .imgCen{
   width: 100%;
@@ -125,8 +125,8 @@
 }
 .imgCen1{
   z-index: 999;
-  width: 100rpx;
-  height: 100rpx;
+  width: 120rpx;
+  height: 120rpx;
   top:65rpx;
   left: 126rpx;
   position: relative;
@@ -150,12 +150,12 @@
 }
 .t1{
   float: left;
-  margin-left: 70rpx;
+  margin-left: 67rpx;
 }
 .tec{
   color: #A9A9A9;
   font-size: 25rpx;
-  width: 115rpx;
+  width: 110rpx;
   overflow: hidden;
   display: block;
   text-overflow: ellipsis;
@@ -227,7 +227,13 @@
   width: 100rpx;
   height: 40rpx;
   top:85rpx;
-  left: 28rpx;
+  left: 18rpx;
   position: relative;
 
+}
+.hidd{
+  width: 110rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
 }

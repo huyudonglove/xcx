@@ -35,53 +35,53 @@
   </view> -->
   <view class="detail2v1">
     <view class="t1">
-      <view wx:if="{{allRole[0].type==0}}"> 
+      <view wx:if="{{allRole[0].type==0}}" class="hidd"> 
         <image src="../img/a.png" class="imgF" bindtap="goToPay"></image>
         <text class="tec">等待中....</text>
       </view>
-      <view wx:if="{{allRole[0].type==2}}">
+      <view wx:if="{{allRole[0].type==2}}" class="hidd">
         <image src="../img/s.png" class="imgF"></image>
       </view>
-      <view wx:if="{{allRole[0].type==1}}">
+      <view wx:if="{{allRole[0].type==1}}" class="hidd">
         <image src="{{allRole[0].avatarUrl}}" class="imgF"></image>
         <text class="tec">{{allRole[0].nickName}}</text>
       </view>
     </view>
     <view class="t1">
-      <view wx:if="{{allRole[1].type==0}}"> 
+      <view wx:if="{{allRole[1].type==0}}" class="hidd"> 
         <image src="../img/a.png" class="imgF" bindtap="goToPay"></image>
         <text class="tec">等待中....</text>
       </view>
-      <view wx:if="{{allRole[1].type==2}}">
+      <view wx:if="{{allRole[1].type==2}}" class="hidd">
         <image src="../img/s.png" class="imgF"></image>
       </view>
-      <view wx:if="{{allRole[1].type==1}}">
+      <view wx:if="{{allRole[1].type==1}}" class="hidd">
         <image src="{{allRole[1].avatarUrl}}" class="imgF"></image>
         <text class="tec">{{allRole[1].nickName}}</text>
       </view>
     </view>
     <view class="t1">
-      <view wx:if="{{allRole[2].type==0}}"> 
+      <view wx:if="{{allRole[2].type==0}}" class="hidd"> 
         <image src="../img/a.png" class="imgF" bindtap="goToPay"></image>
         <text class="tec">等待中....</text>
       </view>
-      <view wx:if="{{allRole[2].type==2}}">
+      <view wx:if="{{allRole[2].type==2}}" class="hidd">
         <image src="../img/s.png" class="imgF"></image>
       </view>
-      <view wx:if="{{allRole[2].type==1}}">
+      <view wx:if="{{allRole[2].type==1}}" class="hidd">
         <image src="{{allRole[2].avatarUrl}}" class="imgF"></image>
         <text class="tec">{{allRole[2].nickName}}</text>
       </view>
     </view>
     <view class="t1">
-      <view wx:if="{{allRole[3].type==0}}"> 
+      <view wx:if="{{allRole[3].type==0}}" class="hidd"> 
         <image src="../img/a.png" class="imgF" bindtap="goToPay"></image>
         <text class="tec">等待中...</text>
       </view>
-      <view wx:if="{{allRole[3].type==2}}">
+      <view wx:if="{{allRole[3].type==2}}" class="hidd">
         <image src="../img/s.png" class="imgF"></image>
       </view>
-      <view wx:if="{{allRole[3].type==1}}">
+      <view wx:if="{{allRole[3].type==1}}" class="hidd">
         <image src="{{allRole[3].avatarUrl}}" class="imgF"></image>
         <text class="tec">{{allRole[3].nickName}}</text>
       </view>
@@ -89,14 +89,14 @@
   </view>
   <view class="detail2v2">
     <view  class="i45" style="top:80rpx;left:40rpx">
-      <view wx:if="{{allRole[4].type==0}}" > 
+      <view wx:if="{{allRole[4].type==0}}" class="hidd"> 
         <image src="../img/a.png" class="imgF" bindtap="goToPay" ></image>
         <text class="tec">等待中...</text>
       </view>
-      <view wx:if="{{allRole[4].type==2}}">
+      <view wx:if="{{allRole[4].type==2}}" class="hidd">
         <image src="../img/s.png" class="imgF"></image>
       </view>
-      <view wx:if="{{allRole[4].type==1}}">
+      <view wx:if="{{allRole[4].type==1}}" class="hidd">
         <image src="{{allRole[4].avatarUrl}}" class="imgF"></image>
         <text class="tec">{{allRole[4].nickName}}</text>
       </view>
@@ -106,15 +106,15 @@
       <image src="../img/DM.png" class="imgCen2"></image>
       <image src="../img/i.png" class="imgCen"></image>
     </view>
-    <view class="i45" style="top:-280rpx;left:600rpx">
-      <view wx:if="{{allRole[5].type==0}}"> 
+    <view class="i45" style="top:-280rpx;left:620rpx">
+      <view wx:if="{{allRole[5].type==0}}" class="hidd"> 
         <image src="../img/a.png" class="imgF" bindtap="goToPay"></image>
         <text class="tec">等待中...</text>
       </view>
-      <view wx:if="{{allRole[5].type==2}}">
+      <view wx:if="{{allRole[5].type==2}}" class="hidd">
         <image src="../img/s.png" class="imgF"></image>
       </view>
-      <view wx:if="{{allRole[5].type==1}}">
+      <view wx:if="{{allRole[5].type==1}}" class="hidd">
         <image src="{{allRole[5].avatarUrl}}" class="imgF"></image>
         <text class="tec">{{allRole[5].nickName}}</text>
       </view>
@@ -122,53 +122,53 @@
   </view>
   <view class="detail2v3">
     <view class="t1">
-      <view wx:if="{{allRole[6].type==0}}"> 
+      <view wx:if="{{allRole[6].type==0}}" class="hidd"> 
         <image src="../img/a.png" class="imgF" bindtap="goToPay"></image>
         <text class="tec">等待中...</text>
       </view>
-      <view wx:if="{{allRole[6].type==2}}">
+      <view wx:if="{{allRole[6].type==2}}" class="hidd">
         <image src="../img/s.png" class="imgF"></image>
       </view>
-      <view wx:if="{{allRole[6].type==1}}">
+      <view wx:if="{{allRole[6].type==1}}" class="hidd">
         <image src="{{allRole[6].avatarUrl}}" class="imgF"></image>
         <text class="tec">{{allRole[6].nickName}}</text>
       </view>
     </view>
     <view class="t1">
-      <view wx:if="{{allRole[7].type==0}}"> 
+      <view wx:if="{{allRole[7].type==0}}" class="hidd"> 
         <image src="../img/a.png" class="imgF" bindtap="goToPay"></image>
         <text class="tec">等待中...</text>
       </view>
-      <view wx:if="{{allRole[7].type==2}}">
+      <view wx:if="{{allRole[7].type==2}}" class="hidd">
         <image src="../img/s.png" class="imgF"></image>
       </view>
-      <view wx:if="{{allRole[7].type==1}}">
+      <view wx:if="{{allRole[7].type==1}}" class="hidd">
         <image src="{{allRole[7].avatarUrl}}" class="imgF"></image>
         <text class="tec">{{allRole[7].nickName}}</text>
       </view>
     </view>
     <view class="t1">
-      <view wx:if="{{allRole[8].type==0}}"> 
+      <view wx:if="{{allRole[8].type==0}}" class="hidd"> 
         <image src="../img/a.png" class="imgF" bindtap="goToPay"></image>
         <text class="tec">等待中...</text>
       </view>
-      <view wx:if="{{allRole[8].type==2}}">
+      <view wx:if="{{allRole[8].type==2}}" class="hidd">
         <image src="../img/s.png" class="imgF"></image>
       </view>
-      <view wx:if="{{allRole[8].type==1}}">
+      <view wx:if="{{allRole[8].type==1}}" class="hidd">
         <image src="{{allRole[8].avatarUrl}}" class="imgF"></image>
         <text class="tec">{{allRole[8].nickName}}</text>
       </view>
     </view>
     <view class="t1">
-      <view wx:if="{{allRole[9].type==0}}"> 
+      <view wx:if="{{allRole[9].type==0}}" class="hidd"> 
         <image src="../img/a.png" class="imgF" bindtap="goToPay"></image>
         <text class="tec">等待中...</text>
       </view>
-      <view wx:if="{{allRole[9].type==2}}">
+      <view wx:if="{{allRole[9].type==2}}" class="hidd">
         <image src="../img/s.png" class="imgF"></image>
       </view>
-      <view wx:if="{{allRole[9].type==1}}">
+      <view wx:if="{{allRole[9].type==1}}" class="hidd">
         <image src="{{allRole[9].avatarUrl}}" class="imgF"></image>
         <text class="tec">{{allRole[9].nickName}}</text>
       </view>

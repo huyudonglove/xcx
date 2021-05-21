@@ -6,6 +6,7 @@
   border-radius: 2%;
   margin-left: 20rpx;
   padding-top:10rpx ;
+  margin-bottom: 10rpx;
 }
 .o1{
   height: 100rpx;

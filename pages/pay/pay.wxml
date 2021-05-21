@@ -34,3 +34,4 @@
     <button  class="pay4b" bindtap="pay">提交订单</button>
   </view>
 </view>
+<loading hidden="{{onOff}}">加载中...</loading>
