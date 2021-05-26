@@ -237,3 +237,28 @@
   text-overflow: ellipsis;
   text-align: center;
 }
+.middle-box{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background:rgba(0,0,0,.5);
+  top:0;
+  z-index: 1000;
+  text-align:center;
+}
+.boxH{
+  position: relative;
+  left:22%;
+  top:30%;
+  width: 60%;
+  height: 15%;
+  background: #fff;
+  border-radius: 3%;
+}
+.title{
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.btn{
+  background: #ddd;
+}

@@ -189,3 +189,9 @@
   <text class="detail4v2">共{{detailMsg.boughtCount}}人</text>
   <button size="mini" class="detail4b1" bindtap="goToPay">去拼团</button>
 </view>
+<view class='middle-box' wx:if="{{!hasUserInfo}}">
+    <view class="boxH">
+      <view class='title'>点击确认按钮，确认授权</view>
+      <button class='btn'  bindtap='getUserProfile'>确认授权</button>
+    </view>
+</view>

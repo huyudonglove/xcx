@@ -14,7 +14,7 @@
 .paySv1v2{
   position: relative;
   top:110rpx;
-  left:0;
+  left:-10rpx;
   height: 100rpx;
 }
 .paySb{

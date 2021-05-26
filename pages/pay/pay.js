@@ -121,6 +121,24 @@ Page({
       })
       return
     }
+    function isPhone(phone) {
+      var myreg=/^1[3-9]\d{9}$/;
+      if (myreg.test(phone)) {
+          return true
+      } else {
+          return false
+      }
+    }
+    let phone=isPhone(msg.customerPhone);
+    console.log(phone,88888888)
+    if(!phone){
+      wx.showToast({
+        title: '手机号码不正确',
+        icon: 'error',
+        duration: 2000
+      })
+      return
+    }
     this.setData({
       onOff:false
     })
@@ -132,7 +150,13 @@ Page({
         wx.navigateTo({
           url: '../payS/payS',
         })
-      }else{
+      }else if(v.code==1003){
+        wx.showToast({
+          title: '人数已满',
+          icon: 'error',
+          duration: 2000
+        })
+      } else{
         wx.showToast({
           title: '拼团失败',
           icon: 'error',

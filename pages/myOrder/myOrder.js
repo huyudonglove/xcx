@@ -14,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.hideShareMenu();
     console.log(this.options)
     this.setData({
       current:this.options.id
@@ -89,7 +90,8 @@ Page({
         wx.stopPullDownRefresh();
         let data=v.data;
         //let url='http://10.10.30.143/files/';
-        let url='https://dev-mini.utopaxr.com:4430/images/';
+        //let url='https://dev-mini.utopaxr.com:4430/test_images/';
+        let url=wx.getStorageSync('currentUrl');
         data.map(r=>{
           if(r.storyCoverImg){
           let a=r.storyCoverImg.split(",");

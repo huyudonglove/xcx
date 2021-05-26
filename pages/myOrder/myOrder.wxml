@@ -11,10 +11,14 @@
     <view class="o2v1">
      <view class="ot1">{{item.playTime}}</view> 
      <view class="ot2">
-        <view wx:if="{{item.orderStatus==0}}" style="width:100rpx;background:rgb(247,133,32)">待支付</view>
-        <view wx:if="{{item.orderStatus==1}}" style="width:100rpx;background:rgb(15,190,154)">待开始</view>
-        <view wx:if="{{item.orderStatus==2}}" style="width:100rpx;background:rgb(190,190,190)">已完成</view>
-        <view wx:if="{{item.orderStatus==3}}" style="width:100rpx;background:red">已退款</view>
+        <image src="../img/o.png" class="imgIcon" wx:if="{{item.orderStatus==0}}"></image>
+        <image src="../img/red.png" class="imgIcon" wx:if="{{item.orderStatus==1}}"></image>
+        <image src="../img/g.png" class="imgIcon" wx:if="{{item.orderStatus==2}}"></image>
+        <image src="../img/sh.png" class="imgIcon" wx:if="{{item.orderStatus==3}}"></image>
+        <view wx:if="{{item.orderStatus==0}}" class="text">待支付</view>
+        <view wx:if="{{item.orderStatus==1}}" class="text">待开始</view>
+        <view wx:if="{{item.orderStatus==2}}" class="text">已完成</view>
+        <view wx:if="{{item.orderStatus==3}}" class="text">已退款</view>
      </view>
      
     </view>
@@ -26,7 +30,7 @@
           <view class="c1">
             {{item.storyTitle}}
           </view>
-          <view>
+          <view style="max-height:45rpx;overflow:hidden">
            <image src="../img/l.png" class="imgI"></image> <text class="ot">{{item.shopAddress}}</text>
           </view>
           <view>

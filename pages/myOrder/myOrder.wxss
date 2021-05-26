@@ -31,10 +31,12 @@
 }
 .o2v2{
   height: 200rpx;
+  overflow: hidden;
 }
 .c{
   float: left;
   min-width: 20%;
+  max-width: 60%;
   margin-left:30rpx ;
 }
 .imgO{
@@ -48,14 +50,19 @@
 }
 .ot2{
   float: right;
+  position: static;
 }
 .imgI{
   width: 20rpx;
   height: 23rpx;
   margin-right: 10rpx;
+  float: left;
+  vertical-align: middle;
 }
 .ot{
   color: rgb(203, 203, 203);
+  max-height: 45rpx;
+  overflow: hidden;
 }
 .c1{
   height: 80rpx;
@@ -66,4 +73,18 @@
 }
 .yes{
   color: black;
+}
+.imgIcon{
+  position: relative;
+  width: 110rpx;
+  height: 50rpx;
+  left: 0;
+  z-index: 1;
+}
+.text{
+  position: relative;
+  top: -50rpx;
+  z-index: 10;
+  text-align: center;
+  color: white;
 }

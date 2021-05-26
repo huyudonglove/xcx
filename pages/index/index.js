@@ -13,7 +13,8 @@ Page({
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
     listData:[],
     current:1,
-    index:''
+    index:'',
+    inputValue:null
   },
   // 事件处理函数
   bindViewTap() {
@@ -24,7 +25,7 @@ Page({
   },
   onRefresh(){
     //在当前页面显示导航条加载动画
-    wx.showNavigationBarLoading(); 
+    //wx.showNavigationBarLoading(); 
     //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
     wx.showLoading({
       title: '刷新中...',
@@ -32,13 +33,17 @@ Page({
     this.onLoad();
   },
   onLoad() {
+    
+    let user=wx.getStorageSync('hasUserInfo')||false;
+    this.setData({
+      hasUserInfo:user
+    })
+    wx.setStorageSync('currentUrl', 'https://dev-mini.utopaxr.com:4430/test_images/')
     call.listStoryGroup('').then(v=>{
-      wx.hideLoading();
-      wx.hideNavigationBarLoading();
-      wx.stopPullDownRefresh();
+      //wx.stopPullRefresh();
       let data=v.data;
      // let url='http://10.10.30.143/files/'
-     let url='https://dev-mini.utopaxr.com:4430/images/';
+     let url=wx.getStorageSync('currentUrl');
       data.map(r=>{
         if(r.storyCoverImg){
           let a=r.storyCoverImg.split(",");
@@ -51,6 +56,11 @@ Page({
       this.setData({
         listData:data
       })
+      wx.stopPullDownRefresh();
+      wx.hideLoading();
+     // wx.hideNavigationBarLoading();
+      
+
     }).catch(err=>{
       
     });
@@ -86,13 +96,17 @@ Page({
     })
   },
   onShow:function(){
-   // this.onLoad();
+    //this.onLoad();
   },
   goTo(e){
-    console.log(this.data.userInfo)
+    //console.log(this.data.userInfo)；
+    this.setData({
+      'inputValue': ''
+      });
     var key=e.currentTarget.dataset.index;
     console.log(this)
     if(key==1){
+      this.onLoad();
       this.setData({
         current:1
        })
@@ -118,11 +132,19 @@ Page({
     })
   },
   getInput(e){
-    var value=e.detail.value
+    console.log(e)
+    var value=e.detail.value;
+    this.setData({
+      inputValue:value
+    });
+    this.search(value);
+  },
+  search(value){
     call.listStoryGroup(value).then(v=>{
       let data=v.data;
      // let url='http://10.10.30.143/files/'
-     let url='https://dev-mini.utopaxr.com:4430/images/';
+     //let url='https://dev-mini.utopaxr.com:4430/test_images/';
+     let url=wx.getStorageSync('currentUrl');
       data.map(r=>{
         if(r.storyCoverImg){
           let a=r.storyCoverImg.split(",");
@@ -138,5 +160,38 @@ Page({
     }).catch(err=>{
       
     });
+  },
+  onShareAppMessage: function (options) {
+    console.log(options)
+    console.log(this);
+
+    　　// 设置菜单中的转发按钮触发转发事件时的转发内容
+    　　var shareObj = {
+    　　　　title: "一起来打本，永远不会鸽！",        // 默认是小程序的名称(可以写slogan等)
+    　　　　path: '/pages/index/index',        // 默认是当前页面，必须是以‘/’开头的完整路径
+    　　　　imageUrl: '',     //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+    　　　　success: function(res){
+    　　　　　　// 转发成功之后的回调
+    　　　　　　if(res.errMsg == 'shareAppMessage:ok'){
+    　　　　　　}
+    　　　　},
+    　　　　fail: function(){
+    　　　　　　// 转发失败之后的回调
+    　　　　　　if(res.errMsg == 'shareAppMessage:fail cancel'){
+    　　　　　　　　// 用户取消转发
+    　　　　　　}else if(res.errMsg == 'shareAppMessage:fail'){
+    　　　　　　　　// 转发失败，其中 detail message 为详细失败信息
+    　　　　　　}
+    　　　　},
+    　　};
+    　　// 来自页面内的按钮的转发
+    　　if( options.from == 'button' ){
+    　　　　var eData = options.target.dataset;
+    　　　　console.log( eData.name );     // shareBtn
+    　　　　// 此处可以修改 shareObj 中的内容
+    　　　　shareObj.path = '/pages/detail/detail';
+    　　}
+    　　// 返回shareObj
+    　　return shareObj
   }
 })

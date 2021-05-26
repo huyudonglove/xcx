@@ -86,9 +86,12 @@
   height: 90%;
 }
 .name{
-  height: 100rpx;
-  line-height: 100rpx;
+  /* height: 100rpx;
+  line-height: 100rpx; */
   font-size: 50rpx;
+  word-break:break-all;   
+  width: 480rpx;
+  overflow: hidden;
 }
 .price{
   height: 100rpx;

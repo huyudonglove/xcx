@@ -4,7 +4,7 @@
     <view class="con">
       <view class="i1">
           <image src="../img/input.png" style="width:700rpx;height:68rpx;" class="i1v1"></image>
-          <input  placeholder="请输入关键字" class="ii i1v2" bindinput="getInput"/>
+          <input  placeholder="请输入关键字" class="ii i1v2" bindinput="getInput" />
       </view>
       <view class="bor" wx:for="{{listData}}" wx:key="unique" data-index="{{item.groupId}}" bindtap="goToDetail">
         <view class="imgC">
@@ -16,7 +16,8 @@
         <view class="timeC">
           {{item.playTime}} <text style="color:red;margin-left:10rpx;">{{item.groupPrice}}元</text>/位
         </view>
-      </view>  
+      </view> 
+      <view style="float:left;width:100%;height:100rpx;color:white;">11111111111111111</view> 
   </view>
   </view>
   <view wx:if="{{current==2}}">

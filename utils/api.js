@@ -1,5 +1,5 @@
 //export const API_URI = 'http://10.10.30.143:4431'
-export const API_URI = 'https://dev-mini.utopaxr.com:4430/interface'
+export const API_URI = 'https://dev-mini.utopaxr.com:4430/test_interface'
 //export const API_URI = 'https://www.baidu.com'
 var token;
 function fetchApi(type, params, method) {
@@ -21,13 +21,17 @@ function fetchApi(type, params, method) {
  
 module.exports = {
     getLogin(params){
-        fetchApi('/api/client/customer/wxLogin',params,"POST").then(res=>{
+        return new Promise((resolve,reject)=>{
+            fetchApi('/api/client/customer/wxLogin',params,"POST").then(res=>{
             let data=JSON.stringify(res.data.data);
             wx.setStorageSync('user', data);
             wx.setStorageSync('token', res.data.data.token)
+            resolve(res)
         }).catch(r=>{
-            
+            reject(r)
         })
+      })
+        
     },
     listStoryGroup(storyTitle){
         token=wx.getStorageSync('token');

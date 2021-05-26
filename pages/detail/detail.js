@@ -7,53 +7,89 @@ Page({
    */
   data: {
       detailMsg:{},
-      allRole:[]
+      allRole:[],
+      canIUseGetUserProfile:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      console.log(this.options)
-      call.getStoryGroupingDetail(this.options.id).then(v=>{
-        wx.hideLoading();
-        wx.hideNavigationBarLoading();
-        wx.stopPullDownRefresh();
-        let data=v.data;
-        //let url='http://10.10.30.143/files/';
-        let url='https://dev-mini.utopaxr.com:4430/images/';
-        if(data.shopLogoImg){
-          let a=data.shopLogoImg.split(',');
-          data.shopI=url+a[0]
-        }else{
-          data.shopI='../img/no.png';
-        }
-        if(data.storyCoverImg){
-          let a=data.storyCoverImg.split(",");
-          data.sI=url+a[0]
-        }else{
-          data.sI='../img/no.png'
-        } 
-        if(data.dmImg){
-          let a=data.dmImg.split(",");
-          data.dI=url+a[0]
-        }else{
-          data.dI='../img/nop.png'
-        }    
-        this.setData({
-          detailMsg:data
-        })
-        call.getPaidOrderList(this.options.id).then(v=>{
-         // console.log(this.data)
-         this.setData({
-           allRole:v.data
-         })
-         this.judgeRole();
+      console.log(this.options);
+      let user=wx.getStorageSync('hasUserInfo')||false;
+      this.setData({
+        hasUserInfo:user
       })
-    });
-      
+      if(user){
+        this.getData();
+      }
   },
-
+  getUserProfile(e) {
+    wx.login({
+      success: res => {
+        console.log(res)
+        call.getLogin({jsCode:res.code}).then(v=>{
+           this.getData();
+        });
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+       
+      }
+    })
+    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+    wx.getUserProfile({
+      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+        console.log(this.data);
+        wx.setStorageSync('userInfo', res.userInfo);
+        wx.setStorageSync('hasUserInfo', true);
+        
+      }
+    })
+  },
+  getData(){
+    call.getStoryGroupingDetail(this.options.id).then(v=>{
+      wx.hideLoading();
+      wx.hideNavigationBarLoading();
+      wx.stopPullDownRefresh();
+      let data=v.data;
+      //let url='http://10.10.30.143/files/';
+      //let url='https://dev-mini.utopaxr.com:4430/test_images/';
+      let url=wx.getStorageSync('currentUrl');
+      if(data.shopLogoImg){
+        let a=data.shopLogoImg.split(',');
+        data.shopI=url+a[0]
+      }else{
+        data.shopI='../img/no.png';
+      }
+      if(data.storyCoverImg){
+        let a=data.storyCoverImg.split(",");
+        data.sI=url+a[0]
+      }else{
+        data.sI='../img/no.png'
+      } 
+      if(data.dmImg){
+        let a=data.dmImg.split(",");
+        data.dI=url+a[0]
+      }else{
+        data.dI='../img/nop.png'
+      }    
+      this.setData({
+        detailMsg:data
+      })
+      call.getPaidOrderList(this.options.id).then(v=>{
+       // console.log(this.data)
+       this.setData({
+         allRole:v.data
+       })
+       this.judgeRole();
+    })
+  });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -110,11 +146,12 @@ Page({
    */
   onShareAppMessage: function (options) {
     console.log(options)
-    console.log(this)
+    console.log(this);
+
     　　// 设置菜单中的转发按钮触发转发事件时的转发内容
     　　var shareObj = {
     　　　　title: "一起来打本，永远不会鸽！",        // 默认是小程序的名称(可以写slogan等)
-    　　　　path: '/pages/detail/detail',        // 默认是当前页面，必须是以‘/’开头的完整路径
+    　　　　path: '/pages/detail/detail?id='+this.options.id,        // 默认是当前页面，必须是以‘/’开头的完整路径
     　　　　imageUrl: '',     //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
     　　　　success: function(res){
     　　　　　　// 转发成功之后的回调
