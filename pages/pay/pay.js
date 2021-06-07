@@ -11,7 +11,13 @@ Page({
       month:'',
       day:'',
       phone:'',
-      onOff:true
+      onOff:true,
+      total:5000,
+      num:[],
+      useGeshi:0,
+      show:false,
+      oneButton: [{text: '确定'}],
+      showOneButtonDialog:false
   },
 
   /**
@@ -32,6 +38,7 @@ Page({
    this.setData({
      day:new Date().getDate()
    })
+   this.computedGeshi();
   },
 
   /**
@@ -169,5 +176,80 @@ Page({
         url: '../payS/payS',
       })
     })
+  },
+  computedGeshi(){
+    let n=Math.floor(this.data.total/1000);
+    let nc=[];
+    for(let i=0;i<n;i++){
+      let it={
+        value:i,
+        checked:false,
+        disabled:!(this.data.detail.groupPrice>=(i+1)*10)
+      }
+      nc.push(it)
+    }
+    //console.log(nc,"nc")
+    this.setData({
+      num:nc
+    })
+  },
+  radioChange(e){
+    console.log(e);
+    this.setData({
+      useGeshi:e.detail.value*1+1
+    })
+    const items=this.data.num;
+    for (let i = 0;i<items.length;i++) {
+      if(items[i].value==e.detail.value){
+        items[i].checked=true
+      }else{
+        items[i].checked=false
+      }
+    }
+
+    this.setData({
+      num:items
+    })
+  },
+  changeShow(){
+    this.setData({
+      show:!this.data.show
+    })
+  },
+  noUse(){
+    let num=this.data.num;
+    num.map(v=>{
+      v.checked=false
+    });
+    this.setData({
+      num
+    });
+    this.setData({
+      useGeshi:0
+    });
+    this.setData({
+      show:!this.data.show
+    })
+  },
+  getPhoneNumber (e) {
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData);
+    if (e.detail.errMsg == "getPhoneNumber:ok") {
+
+    }else{
+      wx.showToast({
+        title: '获取手机失败',
+        icon: 'error',
+        duration: 2000
+      })
+      return
+    }
+
+  },
+  tapDialogButton(){
+    this.setData({
+      showOneButtonDialog: !this.data.showOneButtonDialog
+  })
   }
 })

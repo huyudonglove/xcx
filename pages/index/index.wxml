@@ -26,6 +26,7 @@
 </view>
 
 <!-- <button bindtap="goToOrder">11111</button> -->
+<!-- <button bindgetphonenumber='getPhoneNum' open-type='getPhoneNumber' class="btm" style="z-index:9999">微信快速登陆</button> -->
 <view class="btm">
       <view class="btm-s"  bindtap="goTo" data-index="1">
         <image src="../img/h.png" class="imgF" wx:if="{{current==2}}"></image>

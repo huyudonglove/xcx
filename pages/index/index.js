@@ -38,7 +38,8 @@ Page({
     this.setData({
       hasUserInfo:user
     })
-    wx.setStorageSync('currentUrl', 'https://dev-mini.utopaxr.com:4430/test_images/')
+    wx.setStorageSync('currentUrl', 'https://dev-mini.utopaxr.com:4430/test_images/');
+    //wx.setStorageSync('currentUrl', 'http://10.10.30.143/files/');
     call.listStoryGroup('').then(v=>{
       //wx.stopPullRefresh();
       let data=v.data;
@@ -193,5 +194,8 @@ Page({
     　　}
     　　// 返回shareObj
     　　return shareObj
+  },
+  getPhoneNum(e){
+    console.log(e)
   }
 })
