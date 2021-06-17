@@ -58,7 +58,7 @@
   line-height: 50rpx;
 }
 .mylist{
-  height: 300rpx;
+  height: 420rpx;
   line-height: 60rpx;
   position: relative;
   top:-10rpx;
@@ -133,7 +133,6 @@
   width: 150rpx;
   height: 150rpx;
   border:1px solid #ddd;
-  margin-right: 15rpx;
   margin-top:20rpx;
   text-align: center;
   border-radius: 5%;
@@ -161,7 +160,7 @@
   width: 80%;
   height: 100rpx;
   margin-left: 120rpx;
-  margin-top: 15rpx;
+  margin-top: 12rpx;
 }
 .i1{
   height: 100rpx;
@@ -180,4 +179,12 @@
 .ft{
   font-size: 20rpx;
   margin-top:-10rpx;
+}
+.geshi{
+  height: 120rpx;
+  line-height: 120rpx;
+}
+.all1{
+  display: flex;
+  justify-content: space-around;
 }

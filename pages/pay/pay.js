@@ -12,7 +12,7 @@ Page({
       day:'',
       phone:'',
       onOff:true,
-      total:5000,
+      total:0,
       num:[],
       useGeshi:0,
       show:false,
@@ -38,7 +38,8 @@ Page({
    this.setData({
      day:new Date().getDate()
    })
-   this.computedGeshi();
+   //this.computedGeshi();
+   this.getAccount();
   },
 
   /**
@@ -106,7 +107,9 @@ Page({
     "shopId":"",
     "shopAddress": "",
     "customerPhone": "",
-    "playTime": ""
+    "playTime": "",
+    "integralAmount": 0,
+    "inviteCode": ''
     };
     let detail=this.data.detail;
     msg.nickName=this.data.userInfo.nickName;
@@ -119,6 +122,8 @@ Page({
     msg.shopAddress=detail.shopAddress;
     msg.customerPhone=this.data.phone;
     msg.playTime=detail.playTime;
+    msg.integralAmount=this.data.useGeshi*1000;
+    msg.inviteCode=this.options.share;
     console.log(msg,9999);
     if(!msg.customerPhone){
       wx.showToast({
@@ -193,27 +198,71 @@ Page({
       num:nc
     })
   },
+  getAccount(){
+    call.getAccount().then(res=>{
+        res.code&&(()=>{
+          console.error(res)
+        })();
+        !res.code&&(()=>{
+          let data=res.data.userAccount.balanceAmount-res.data.userAccount.freezeAmount;
+          console.log(data,7777)
+          this.setData({
+            total:data
+          })
+          this.computedGeshi();
+        })();
+    })
+  },
   radioChange(e){
     console.log(e);
-    this.setData({
-      useGeshi:e.detail.value*1+1
-    })
+    
     const items=this.data.num;
-    for (let i = 0;i<items.length;i++) {
-      if(items[i].value==e.detail.value){
-        items[i].checked=true
+    let index=e.target.dataset.index;
+    items.map(v=>{
+      if(v.value==index){
+        v.checked=!v.checked
       }else{
-        items[i].checked=false
+        v.checked=false
       }
-    }
-
+    })
     this.setData({
       num:items
     })
+  
+    let i=0;
+    var self=this;
+    function aa(){
+      if(i<items.length){
+        if(items[i].checked){
+          self.setData({
+            useGeshi:items[i].value*1+1
+          })
+          return;
+        }else{
+          self.setData({
+            useGeshi:0
+          })
+          i++;
+          return aa();
+        }
+      }else{
+        return
+      }
+    }
+    aa();
+
   },
   changeShow(){
     this.setData({
       show:!this.data.show
+    })
+    var self=this;
+    this.data.num.map(v=>{
+      if(v.checked){
+        self.setData({
+          useGeshi:v.value*1+1
+        })
+      }
     })
   },
   noUse(){
@@ -232,17 +281,31 @@ Page({
     })
   },
   getPhoneNumber (e) {
+   
     console.log(e.detail.errMsg)
     console.log(e.detail.iv)
     console.log(e.detail.encryptedData);
+    let msg={
+      iv:e.detail.iv,
+      encryptedData:e.detail.encryptedData,
+      type:2
+    }
     if (e.detail.errMsg == "getPhoneNumber:ok") {
-
+      call.saveWx(msg).then(v=>{
+        this.pay();
+      })
+      
     }else{
+      this.pay();
+      // wx.navigateTo({
+      //   url: '../payS/payS',
+      // })
       wx.showToast({
         title: '获取手机失败',
         icon: 'error',
         duration: 2000
       })
+      
       return
     }
 
@@ -250,6 +313,17 @@ Page({
   tapDialogButton(){
     this.setData({
       showOneButtonDialog: !this.data.showOneButtonDialog
-  })
+    })
+    this.setData({
+      show:!this.data.show
+    })
+  },
+  close(e){
+    console.log(e);
+    if(e.target.dataset.index==1){
+      this.setData({
+        show:!this.data.show
+      })
+    }
   }
 })

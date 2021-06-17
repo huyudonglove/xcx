@@ -14,7 +14,8 @@ Page({
     listData:[],
     current:1,
     index:'',
-    inputValue:null
+    inputValue:null,
+    total:0
   },
   // 事件处理函数
   bindViewTap() {
@@ -22,6 +23,7 @@ Page({
   },
   onPullDownRefresh: function () {
     this.onRefresh();
+    this.getAccount();
   },
   onRefresh(){
     //在当前页面显示导航条加载动画
@@ -33,7 +35,7 @@ Page({
     this.onLoad();
   },
   onLoad() {
-    
+    wx.hideShareMenu();
     let user=wx.getStorageSync('hasUserInfo')||false;
     this.setData({
       hasUserInfo:user
@@ -78,6 +80,12 @@ Page({
       desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
         console.log(res)
+        let msg={
+          "encryptedData": res.encryptedData,
+          "iv": res.iv,
+          "type": 1
+        }
+        call.saveWx(msg)
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true
@@ -85,6 +93,7 @@ Page({
         console.log(this.data);
         wx.setStorageSync('userInfo', res.userInfo);
         wx.setStorageSync('hasUserInfo', true);
+        
       }
     })
   },
@@ -98,6 +107,10 @@ Page({
   },
   onShow:function(){
     //this.onLoad();
+    console.log(77777)
+    this.setData({
+      total:wx.getStorageSync('geShi')
+    })
   },
   goTo(e){
     //console.log(this.data.userInfo)；
@@ -105,7 +118,7 @@ Page({
       'inputValue': ''
       });
     var key=e.currentTarget.dataset.index;
-    console.log(this)
+    //console.log(this)
     if(key==1){
       this.onLoad();
       this.setData({
@@ -117,6 +130,9 @@ Page({
         current:2
        })
      }
+     this.setData({
+       total:wx.getStorageSync('geShi')
+     })
   },
   goToOrder(e){
     console.log(e)
@@ -143,8 +159,6 @@ Page({
   search(value){
     call.listStoryGroup(value).then(v=>{
       let data=v.data;
-     // let url='http://10.10.30.143/files/'
-     //let url='https://dev-mini.utopaxr.com:4430/test_images/';
      let url=wx.getStorageSync('currentUrl');
       data.map(r=>{
         if(r.storyCoverImg){
@@ -197,5 +211,24 @@ Page({
   },
   getPhoneNum(e){
     console.log(e)
-  }
+  },
+  goToGeshi(){
+    wx.navigateTo({
+      url: '../geshi/geshi',
+    })
+  },
+  getAccount(){
+    call.getAccount().then(res=>{
+        res.code&&(()=>{
+          console.error(res)
+        })();
+        !res.code&&(()=>{
+          let data=res.data.userAccount.balanceAmount-res.data.userAccount.freezeAmount;
+          //console.log(data,7777)
+          this.setData({
+            total:data
+          })
+        })();
+    })
+  },
 })

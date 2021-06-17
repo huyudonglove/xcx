@@ -8,7 +8,9 @@ App({
     wx.login({
       success: res => {
         console.log(res)
-        call.getLogin({jsCode:res.code});
+        call.getLogin({jsCode:res.code}).then(res=>{
+          call.getAccount()
+        });
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
 
       }

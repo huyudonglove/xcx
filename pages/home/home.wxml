@@ -9,10 +9,11 @@
    
 </view>
 <view class="mylist" >
+  <view class="geshi" bindtap="goToGeshi"><text style="font-size:50rpx;margin-right:50rpx">{{total}}</text>个鸽屎</view>
   <view class="myOrder">
     我的订单
   </view>
-  <view>
+  <view class="all1">
     <view class="allC" data-index="4" bindtap="goToOrder">
       <image src="../img/4.png" class="imgO"></image>
       <text class="textO">全部订单</text>

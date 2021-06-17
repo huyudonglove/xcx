@@ -65,7 +65,7 @@
   margin-left: 20rpx;
 }
 .payInputt{
-  width: 400rpx;
+  width: 500rpx;
 }
 .pay3v1{
   height: 250rpx;
@@ -140,7 +140,7 @@
   background: white;
   bottom: 0;
   width: 100%;
-  height: 40%;
+  height: 60%;
 }
 .g1{
   height: 10%;
@@ -155,11 +155,11 @@
   padding:5rpx 16rpx;
 }
 .g3{
-  height: 50%;
+  height: 60%;
   overflow-y: auto;
 }
 .g4{
-  height: 30%;
+  height: 20%;
 }
 .g31{
   height: 20%;

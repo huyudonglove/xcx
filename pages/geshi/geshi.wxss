@@ -1,0 +1,29 @@
+/* pages/geshi/geshi.wxss */
+.g1{
+  height: 300rpx;
+  line-height: 300rpx;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+.g2{
+  min-height: 500rpx;
+}
+.g21{
+  height: 120rpx;
+  padding: 30rpx;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+.l1{
+  height: 70rpx;
+}
+.l2{
+  height: 70rpx;
+  color: rgb(203, 203, 203);
+}
+.l3{
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 50rpx;
+}

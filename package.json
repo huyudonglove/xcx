@@ -1,0 +1,23 @@
+{
+  "name": "xcx",
+  "version": "1.0.0",
+  "description": "微信小程序的基本用法\r 1.获取用户基本信息，头像名称，性别等；\r 2.基本点击事件操作；\r 3.页面跳转操作；\r 4.页面分享设置；\r 5.事件传参，路由传参；\r 6.http请求封装promise；",
+  "main": "app.js",
+  "dependencies": {
+    "weui-miniprogram": "^1.0.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huyudonglove/xcx.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huyudonglove/xcx/issues"
+  },
+  "homepage": "https://github.com/huyudonglove/xcx#readme"
+}

@@ -9,6 +9,9 @@
     </view>
   </view>
   <view class="paySv1v2">
+    <button class="paySb" open-type="share">转发拉小伙伴上车获得鸽屎奖励</button>
+  </view>
+  <view class="paySv1v2">
     <button class="paySb" bindtap="goBack">返回首页</button>
   </view>
 </view>

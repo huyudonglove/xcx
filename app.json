@@ -5,14 +5,15 @@
     "pages/logs/logs",
     "pages/detail/detail",
     "pages/pay/pay",
-    "pages/payS/payS"
+    "pages/payS/payS",
+    "pages/geshi/geshi"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "来打本",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh":true
+    "enablePullDownRefresh": true
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

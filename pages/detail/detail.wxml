@@ -19,8 +19,8 @@
       </view>
       <view style="float:left;margin-left:20rpx">{{detailMsg.shopName}}</view>
       <view class="d2">
-        <!-- <view data-phone="{{detailMsg.shopPhone}}" style="display:inline-block"><image src="../img/f.png" class="imgIcon2"></image></view> -->
-        <view bindtap="callMe" data-index="{{detailMsg.shopPhone}}" style="display:inline-block;margin-left:80rpx"><image src="../img/d.png" class="imgIcon2"></image></view>
+        <button data-phone="{{detailMsg.shopPhone}}" style="float:right;width:100rpx;background:white" open-type="share"><image src="../img/f.png" class="imgIcon2"></image></button>
+        <view bindtap="callMe" data-index="{{detailMsg.shopPhone}}" style="float:right;margin-top:16rpx"><image src="../img/d.png" class="imgIcon2"></image></view>
       </view>   
     </view>
     <view>

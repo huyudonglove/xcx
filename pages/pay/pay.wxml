@@ -30,49 +30,57 @@
 </view>
 <view class="pc2"></view>
 <view class="pay5">
-  <view style="float:left">鸽屎（共{{total}}个）</view>
-  <view class="pimg" bindtap="changeShow">
-    <image src="../img/ri.png" style="width:50rpx;height:50rpx"></image>
+  <view style="float:left">鸽屎 <block wx:if="{{!useGeshi}}">（共{{total}}个）</block></view>
+  <view class="pimg" bindtap="changeShow" wx:if="{{!useGeshi}}">
+    <image src="../img/ri.png" style="width:50rpx;height:50rpx" ></image>
+  </view>
+  <view wx:else style="float:right;margin-right:50rpx" bindtap="changeShow">
+    <view style="color:red;" >
+      -￥{{useGeshi*10}}
+    </view>
   </view>
 </view>
 <view class="6" wx:if="{{useGeshi}}">
-  <view style="float:right;margin-right:-30rpx">
-    折扣：-￥{{useGeshi*10}}
+  <view style="float:right;margin-right:20rpx;">
+    合计：<text style="color:red">￥{{(detail.groupPrice*100-useGeshi*1000)/100}}</text>
   </view>
 </view>
 <view class="pay4">
-  <view class="pay4v1">总金额：<text style="color:red;font-size:40rpx;">{{detail.groupPrice-useGeshi*10}}元</text></view>
+  <view class="pay4v1">总金额：<text style="color:red;font-size:40rpx;">{{(detail.groupPrice*100-useGeshi*1000)/100}} 元</text></view>
   <view class="pay4v2">
     <!-- <button  class="pay4b" bindtap="pay">提交订单</button> -->
     <button class="pay4b" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">提交订单</button>
   </view>
 </view>
 <loading hidden="{{onOff}}">加载中...</loading>
-<view class="geshi" wx:if="{{show}}">
+<view class="geshi" wx:if="{{show}}" bindtap="close" data-index="1">
   <view class="geshi1"> 
     <view class="g1">
       <view>鸽屎</view>
-      <view bindtap="tapDialogButton">使用规则</view>
+      <view catchtap="tapDialogButton" style="color:#ddd;">使用规则</view>
     </view>
     <view class="g2">
       <view>账户鸽屎数量：{{total}}</view>
-      <view bindtap="noUse">本单暂不使用鸽屎</view>
+      <view wx:if="{{!useGeshi}}" style="color:#ddd;">本单暂不使用鸽屎</view>
+      <view wx:else>本单已减<text style="color:red">￥{{useGeshi*10}}</text></view>
     </view>
     <view class="g3">
-      <view class="g31" wx:for="{{num}}" wx:key="unique">
-        <view>抵扣<text>{{(item.value+1)*10}}</text>元，使用{{(item.value+1)*1000}}鸽屎</view>
-        <radio-group bindchange="radioChange">
-          <view class="weui-cell__hd">
-            <radio value="{{item.value}}" checked="{{item.checked}}" disabled="{{item.disabled}}"/>
-          </view>
-        </radio-group>
+      <view>
+        <view class="g31" wx:for="{{num}}" wx:key="unique">
+          <view>抵扣<text style="color:red">￥{{(item.value+1)*10}}</text>元，使用{{(item.value+1)*1000}}鸽屎</view>      
+            <view class="weui-cell__hd">
+              <checkbox value="{{item.value}}" checked="{{item.checked}}" disabled="{{item.disabled}}" catchtap="radioChange" data-index="{{index}}"/>
+            </view>      
+        </view>
       </view>
     </view>
     <view class="g4">
-      <button style="background:rgb(245,134,49);color:white;margin-top:20rpx" bindtap="changeShow">确定</button>
+      <button style="background:rgb(245,134,49);color:white;margin-top:20rpx" catchtap="changeShow">确定</button>
     </view>
   </view>
 </view>
-<mp-dialog title="鸽屎使用规则" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton" buttons="{{oneButton}}">
-        <view>test content1</view>
+<mp-dialog title="鸽屎使用规则" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton" buttons="{{oneButton}}" mask-closable="{{false}}">
+        <view>使用数量</view>
+        <view>1.使用鸽屎数量为1000的整数倍；</view>
+        <view>2.1000鸽屎抵10元。</view>
 </mp-dialog>

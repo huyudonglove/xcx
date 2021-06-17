@@ -8,7 +8,8 @@ Page({
   data: {
       detailMsg:{},
       allRole:[],
-      canIUseGetUserProfile:false
+      canIUseGetUserProfile:false,
+      share:{}
   },
 
   /**
@@ -22,6 +23,7 @@ Page({
       })
       if(user){
         this.getData();
+        call.getShare();
       }
   },
   getUserProfile(e) {
@@ -30,6 +32,8 @@ Page({
         console.log(res)
         call.getLogin({jsCode:res.code}).then(v=>{
            this.getData();
+           call.getAccount();
+           call.getShare();
         });
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
        
@@ -57,8 +61,7 @@ Page({
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
       let data=v.data;
-      //let url='http://10.10.30.143/files/';
-      //let url='https://dev-mini.utopaxr.com:4430/test_images/';
+    
       let url=wx.getStorageSync('currentUrl');
       if(data.shopLogoImg){
         let a=data.shopLogoImg.split(',');
@@ -145,14 +148,24 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (options) {
-    console.log(options)
-    console.log(this);
-
+    let invite=JSON.parse(wx.getStorageSync('user')).inviteCode;
+    console.log(invite,88888);
+    let msg=`${wx.getStorageSync('userInfo').nickName}喊你一起来打本~`;
+    let share=wx.getStorageSync('share');
+    if(share.messageLocation==1){
+      msg=msg+share.message
+    }
+    if(share.messageLocation==2){
+      msg=share.message+msg;
+    }
+    if(share.messageLocation==3){
+      msg=share.message;
+    }
     　　// 设置菜单中的转发按钮触发转发事件时的转发内容
     　　var shareObj = {
-    　　　　title: "一起来打本，永远不会鸽！",        // 默认是小程序的名称(可以写slogan等)
-    　　　　path: '/pages/detail/detail?id='+this.options.id,        // 默认是当前页面，必须是以‘/’开头的完整路径
-    　　　　imageUrl: '',     //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+    　　　　title: msg,        // 默认是小程序的名称(可以写slogan等)
+    　　　　path: '/pages/detail/detail?id='+this.options.id+'&share='+invite,        // 默认是当前页面，必须是以‘/’开头的完整路径
+    　　　　imageUrl: this.data.detailMsg.sI,     //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
     　　　　success: function(res){
     　　　　　　// 转发成功之后的回调
     　　　　　　if(res.errMsg == 'shareAppMessage:ok'){
@@ -170,17 +183,23 @@ Page({
     　　// 来自页面内的按钮的转发
     　　if( options.from == 'button' ){
     　　　　var eData = options.target.dataset;
-    　　　　console.log( eData.name );     // shareBtn
+    　　　　   // shareBtn
     　　　　// 此处可以修改 shareObj 中的内容
-    　　　　shareObj.path = '/pages/detail/detail';
+    　　　　shareObj.path = '/pages/detail/detail?id='+this.options.id+'&share='+invite;
+            console.log( shareObj.path);  
     　　}
     　　// 返回shareObj
     　　return shareObj
   },
   goToPay(){
+    //console.log(this)
+    let id;
+    this.options.share?id=this.options.share:id=null;
+    let url='../pay/pay?share='+id
+    console.log(url,9999999)
     wx.setStorageSync('detail', this.data.detailMsg)
     wx.navigateTo({
-      url: '../pay/pay',
+      url: url,
     })
   },
   /**判断数组 */

@@ -16,10 +16,13 @@
   top:110rpx;
   left:-10rpx;
   height: 100rpx;
+  margin-bottom: 40rpx;
 }
 .paySb{
   background:#F78520 ;
   color:#FFFFFF;
+  width: 560rpx!important;
+  
 }
 .p{
   text-align: center;

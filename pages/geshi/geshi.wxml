@@ -1,0 +1,14 @@
+<!--pages/geshi/geshi.wxml-->
+<view class="g1"><text style="font-size:50rpx;margin-right:50rpx">{{geShi}}</text>个鸽屎</view>
+<view class="g2">
+  <view class="g21" wx:for="{{total}}" wx:key="unique">
+    <view style="margin-top:10rpx">
+      <view class="l1">{{item.remark}}1</view>
+      <view class="l2">{{item.createTime}}</view>
+    </view>
+    <view class="l3">
+      <text style="color:red" wx:if="{{item.amount*1>0}}">+{{item.amount}}</text>
+      <text style="color:green" wx:else>{{item.amount}}</text>
+    </view>
+  </view>
+</view>

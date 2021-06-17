@@ -83,7 +83,7 @@
 }
 .text{
   position: relative;
-  top: -50rpx;
+  top: -55rpx;
   z-index: 10;
   text-align: center;
   color: white;

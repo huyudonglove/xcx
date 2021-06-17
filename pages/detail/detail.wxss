@@ -94,19 +94,26 @@
   background: #F2F2F2;
 }
 .detail4{
-  position: static;
+  position: fixed;
   height: 100rpx;
   padding-left: 60rpx;
+  bottom: 0;
+  z-index: 10000;
+  background-color: white;
+  width: 100%;
 }
 .detail2v1{
   height: 135rpx;
   overflow: hidden;
   padding-top:20rpx ;
+  display: flex;
+  justify-content: space-around;
 }
 .detail2v2{
   height: 250rpx;
   overflow: hidden;
   position: static;
+  
 }
 .de2vc{
   position: relative;
@@ -141,16 +148,18 @@
   height: 150rpx;
   overflow: hidden;
   padding-bottom:20rpx ;
+  display: flex;
+  justify-content: space-around;
 }
 .imgF{
-  width: 90rpx;
-  height: 90rpx;
+  width: 80rpx;
+  height: 80rpx;
   display: block;
   border-radius: 50%;
 }
 .t1{
-  float: left;
-  margin-left: 67rpx;
+  
+  
 }
 .tec{
   color: #A9A9A9;
@@ -162,7 +171,7 @@
 }
 .detail4v1{
   float: left;
-  margin-left: -40rpx;
+  margin-left: -50rpx;
 }
 .detail4v2{
   float: left;
@@ -173,7 +182,7 @@
   float: right;
   color: #fff;
   background:#F78520 ;
-  margin-right: 30rpx;
+  margin-right: 90rpx;
   margin-top: 20rpx;
 }
 .imgShop{
