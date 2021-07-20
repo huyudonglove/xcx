@@ -1,0 +1,21 @@
+<!--pages/advice/advice.wxml-->
+<view>
+  <view>
+      <view class="title"> 
+        <view>问题和意见</view> 
+        <view>{{length}}/200</view>
+      </view>
+      <view style="padding:10rpx">
+        <textarea data-index="1" bindinput="change" placeholder="请填写10个字及以上的问题描述以便于我们提供更好的帮助" maxlength="200" style="width:100%;border-bottom:1px solid #ddd;" auto-focus="true"/>
+      </view>     
+  </view>
+  <view>
+    <view class="title">联系电话</view>
+    <view style="padding:10rpx">
+      <input type="text" maxlength="11" placeholder="选填，便于我们和你联系" bindinput="change" data-index="2" style="border-bottom:1px solid #ddd" type="number" />
+    </view>
+  </view>
+  <view>
+    <button class="bt" bindtap="add" disabled="{{button}}">提交</button>
+  </view>
+</view>

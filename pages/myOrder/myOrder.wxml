@@ -1,24 +1,27 @@
 <!--pages/myOrder/myOrder.wxml-->
 <view class="o1">
-    <view class="o1v" data-index="4" bindtap="change"><text class="{{current==4?'no':'yes'}}">全部</text></view>
-    <view class="o1v" data-index="3" bindtap="change"><text class="{{current==3?'no':'yes'}}">已退款</text></view>
+    <view class="o1v" data-index="5" bindtap="change"><text class="{{current==5?'no':'yes'}}">全部</text></view>
+    <view class="o1v" data-index="3" bindtap="change"><text class="{{current==3?'no':'yes'}}">已取消</text></view>
     <view class="o1v" data-index="1" bindtap="change"><text class="{{current==1?'no':'yes'}}">待开始</text> </view>
     
-    <view class="o1v" data-index="2" bindtap="change"><text class="{{current==2?'no':'yes'}}">已完成</text></view>
+    <view class="o1v" data-index="2" bindtap="change"><text class="{{current==2?'no':'yes'}}">已成团</text></view>
+    <view class="o1v" data-index="4" bindtap="change"><text class="{{current==4?'no':'yes'}}">已退款</text></view>
 </view>
 <view class="o2">
-  <view class="list" wx:for="{{order}}" wx:key="unique">
+  <view class="list" wx:for="{{order}}" wx:key="unique" data-index="{{item}}" bindtap="goTo">
     <view class="o2v1">
      <view class="ot1">{{item.playTime}}</view> 
      <view class="ot2">
         <image src="../img/o.png" class="imgIcon" wx:if="{{item.orderStatus==0}}"></image>
         <image src="../img/red.png" class="imgIcon" wx:if="{{item.orderStatus==1}}"></image>
         <image src="../img/g.png" class="imgIcon" wx:if="{{item.orderStatus==2}}"></image>
-        <image src="../img/sh.png" class="imgIcon" wx:if="{{item.orderStatus==3}}"></image>
+        <image src="../img/q.png" class="imgIcon" wx:if="{{item.orderStatus==3}}"></image>
+        <image src="../img/sh.png" class="imgIcon" wx:if="{{item.orderStatus==4}}"></image>
         <view wx:if="{{item.orderStatus==0}}" class="text">待支付</view>
         <view wx:if="{{item.orderStatus==1}}" class="text">待开始</view>
-        <view wx:if="{{item.orderStatus==2}}" class="text">已完成</view>
-        <view wx:if="{{item.orderStatus==3}}" class="text">已退款</view>
+        <view wx:if="{{item.orderStatus==2}}" class="text">已成团</view>
+        <view wx:if="{{item.orderStatus==3}}" class="text">已取消</view>
+        <view wx:if="{{item.orderStatus==4}}" class="text">已退款</view>
      </view>
      
     </view>
@@ -31,7 +34,7 @@
             {{item.storyTitle}}
           </view>
           <view style="max-height:45rpx;overflow:hidden">
-           <image src="../img/l.png" class="imgI"></image> <text class="ot">{{item.shopAddress}}</text>
+           <image src="../img/l.png" class="imgI"></image> <view class="ot">{{item.shopAddress}}</view>
           </view>
           <view>
             <image src="../img/t.png" class="imgI"></image><text class="ot">{{item.customerPhone}}</text>

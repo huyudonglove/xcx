@@ -5,13 +5,17 @@
       <icon class="icon-box-img" type="success" size="93"></icon>
     </view>
     <view class="p">
-      <text>支付成功</text>
+      <text wx:if="{{!page}}">支付成功</text>
+      <text wx:if="{{page=='advice'}}">提交成功</text>
     </view>
   </view>
-  <view class="paySv1v2">
+  <view class="paySv1v2" wx:if="{{!page}}">
     <button class="paySb" open-type="share">转发拉小伙伴上车获得鸽屎奖励</button>
   </view>
   <view class="paySv1v2">
+    <view class="p" wx:if="{{page=='advice'}}" style="padding-left:50rpx;padding-right:50rpx;margin-bottom:10rpx;">
+      感谢你对来打本团队的关注和支持，我们会认真处理你的反馈，尽快修复和完善相关功能。
+    </view>
     <button class="paySb" bindtap="goBack">返回首页</button>
   </view>
 </view>

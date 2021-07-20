@@ -17,49 +17,55 @@
   font-size: 20rpx;
 }
 .detail1{
-  height: 400rpx;
+  min-height: 400rpx;
   width: 100%;
   position: static;
   top:350rpx;
 }
 .de1{
   position: relative;
-  height: 80rpx;
-  font-size: 41rpx;
+  min-height: 80rpx;
+  font-size: 30rpx;
   line-height: 80rpx;
   padding-left:20rpx;
+  word-break:break-all; 
+  overflow:hidden; 
 }
 .de2{
   position: relative;
-  height: 100rpx;
+  min-height: 100rpx;
   background:white;
  
   padding-left:20rpx;
 }
 .de3{
-  position: relative;
-  height: 180rpx;
+  /* position: relative; */
+  height: 200rpx;
   width: 90%;
-
+  margin-left: 30rpx;
   padding-left:20rpx;
-  left: 30rpx;
+  /* left: 30rpx; */
   border-radius: 1%;
   border: 1px solid #ddd;
   overflow: hidden;
+  margin-bottom: 30rpx;
 }
 .de2v{
   float: left;
   height: 50rpx;
   width: 300rpx;
-  padding-left: 30rpx;
+  padding-left: 20rpx;
   margin-top:20rpx;
   line-height: 50rpx;
+  font-size: 20rpx;
+  
 }
 .de2v1{
   border-right: 1px solid #dddddd;
 }
 .de2v3{
   margin-left: 40rpx;
+  text-align: center;
 }
 .de3v1{
   height: 100rpx;
@@ -86,11 +92,12 @@
 .detail3{
   position: static;
   padding: 24rpx;
-  height: 400rpx;
+  min-height: 400rpx;
+  max-width: 100%;
 }
 .vc3{
   position: static;
-  height: 20rpx;
+  height: 70rpx;
   background: #F2F2F2;
 }
 .detail4{
@@ -127,7 +134,7 @@
   height: 200rpx;
   z-index: 100;
   position: relative;
-  top: -100rpx;
+  top: -131rpx;
 
 }
 .imgCen1{
@@ -163,11 +170,16 @@
 }
 .tec{
   color: #A9A9A9;
-  font-size: 25rpx;
-  width: 110rpx;
+  font-size: 19rpx;
+  width: 86rpx;
   overflow: hidden;
   display: block;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  text-align: center;
+  height: 57rpx;
 }
 .detail4v1{
   float: left;
@@ -217,6 +229,10 @@
   color:rgb(175,175,175);
   font-size: 20rpx;
   margin-top:12rpx ;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 50rpx;
+  white-space:nowrap
 }
 .imgIcon2{
   width: 50rpx;
@@ -230,6 +246,7 @@
 .det1{
   font-size: 25rpx;
   margin-top: 20rpx;
+  word-break:break-all; 
 }
 .imgCen2{
   z-index: 1000;
@@ -270,4 +287,38 @@
 }
 .btn{
   background: #ddd;
+}
+.kongbai{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  top:0;
+
+}
+.shopName{
+  width:360rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 50rpx;
+  white-space:nowrap;
+  font-size: 24rpx;
+}
+.time{
+  position: absolute;
+  top:20rpx;
+  left: 211rpx;
+}
+.dmName{
+  z-index: 1000;
+  height: 40rpx;
+  top:56rpx;
+  left: 44rpx;
+  position: relative;
+  font-size: 20rpx;
+  text-align: center;
+  width: 80%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space:nowrap
 }

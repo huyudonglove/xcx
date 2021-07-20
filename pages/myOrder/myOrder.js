@@ -7,7 +7,7 @@ Page({
    */
   data: {
       order:[],
-      current:4
+      current:5
   },
 
   /**
@@ -19,7 +19,7 @@ Page({
     this.setData({
       current:this.options.id
     })
-    if(this.data.current==4){
+    if(this.data.current==5){
       this.getData('')
     }else{
       this.getData(this.data.current)
@@ -97,6 +97,12 @@ Page({
           }else{
             r.sI='../img/no.png'
           }
+          if(r.shopLogoImgs){
+            let a=r.shopLogoImgs.split(",");
+            r.shopI=url+a[0]
+            }else{
+              r.shopI='../img/no.png'
+          }
         })
        
         this.setData({
@@ -110,11 +116,19 @@ Page({
       this.setData({
         current:id
       })
-      if(id==4){
+      if(id==5){
         this.getData('')
       }else{
         this.getData(id)
       }
       
+  },
+  goTo(e){
+    console.log(e);
+    let data=e.currentTarget.dataset.index;
+    wx.setStorageSync('currentOrder', data)
+    wx.navigateTo({
+      url: '../orderDetail/orderDetail',
+    })
   }
 })

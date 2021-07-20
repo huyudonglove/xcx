@@ -3,7 +3,7 @@
 <view class="g2">
   <view class="g21" wx:for="{{total}}" wx:key="unique">
     <view style="margin-top:10rpx">
-      <view class="l1">{{item.remark}}1</view>
+      <view class="l1">{{item.remark}}</view>
       <view class="l2">{{item.createTime}}</view>
     </view>
     <view class="l3">

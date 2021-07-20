@@ -17,7 +17,8 @@ Page({
       useGeshi:0,
       show:false,
       oneButton: [{text: '确定'}],
-      showOneButtonDialog:false
+      showOneButtonDialog:false,
+      percent:0.5
   },
 
   /**
@@ -39,7 +40,7 @@ Page({
      day:new Date().getDate()
    })
    //this.computedGeshi();
-   this.getAccount();
+   //this.getAccount();
   },
 
   /**
@@ -53,7 +54,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getAccount();
+    this.setData({
+      useGeshi:0
+    })
   },
 
   /**
@@ -184,7 +188,19 @@ Page({
   },
   computedGeshi(){
     let n=Math.floor(this.data.total/1000);
+    let canuse=parseInt((this.data.detail.groupPrice*this.data.percent)/10);//可以使用鸽屎
     let nc=[];
+    if(n>canuse){
+      for(let i=0;i<canuse;i++){
+            let it={
+              value:i,
+              checked:false,
+              disabled:!(this.data.detail.groupPrice>=(i+1)*10)
+            }
+            nc.push(it)
+          }
+    }
+   if(n<=canuse){
     for(let i=0;i<n;i++){
       let it={
         value:i,
@@ -193,6 +209,7 @@ Page({
       }
       nc.push(it)
     }
+   }
     //console.log(nc,"nc")
     this.setData({
       num:nc

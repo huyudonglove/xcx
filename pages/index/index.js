@@ -40,33 +40,34 @@ Page({
     this.setData({
       hasUserInfo:user
     })
-    wx.setStorageSync('currentUrl', 'https://dev-mini.utopaxr.com:4430/test_images/');
-    //wx.setStorageSync('currentUrl', 'http://10.10.30.143/files/');
-    call.listStoryGroup('').then(v=>{
-      //wx.stopPullRefresh();
-      let data=v.data;
-     // let url='http://10.10.30.143/files/'
-     let url=wx.getStorageSync('currentUrl');
-      data.map(r=>{
-        if(r.storyCoverImg){
-          let a=r.storyCoverImg.split(",");
-          r.sI=url+a[0]
-        }else{
-          r.sI='../img/no.png'
-        }
-      })
-      console.log(data,999999)
-      this.setData({
-        listData:data
-      })
-      wx.stopPullDownRefresh();
-      wx.hideLoading();
-     // wx.hideNavigationBarLoading();
+    call.getFile().then(v=>{
+      call.listStoryGroup('').then(v=>{
+        //wx.stopPullRefresh();
+        let data=v.data;
+       // let url='http://10.10.30.143/files/'
+       let url=wx.getStorageSync('currentUrl');
+        data.map(r=>{
+          if(r.storyCoverImg){
+            let a=r.storyCoverImg.split(",");
+            r.sI=url+a[0]
+          }else{
+            r.sI='../img/no.png'
+          }
+        })
       
-
-    }).catch(err=>{
-      
+        this.setData({
+          listData:data
+        })
+        wx.stopPullDownRefresh();
+        wx.hideLoading();
+       // wx.hideNavigationBarLoading();
+        
+  
+      }).catch(err=>{
+        
+      });
     });
+    
     if (wx.getUserProfile) {
      // console.log(777777)
       this.setData({
@@ -126,6 +127,7 @@ Page({
        })
     }
      if(key==2){
+      this.getAccount();
       this.setData({
         current:2
        })
@@ -133,6 +135,7 @@ Page({
      this.setData({
        total:wx.getStorageSync('geShi')
      })
+   // this.onLoad();
   },
   goToOrder(e){
     console.log(e)
@@ -231,4 +234,9 @@ Page({
         })();
     })
   },
+  goToMine(){
+    wx.navigateTo({
+      url: '../mine/mine',
+    })
+  }
 })

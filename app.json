@@ -6,7 +6,11 @@
     "pages/detail/detail",
     "pages/pay/pay",
     "pages/payS/payS",
-    "pages/geshi/geshi"
+    "pages/geshi/geshi",
+    "pages/mine/mine",
+    "pages/advice/advice",
+    "pages/orderDetail/orderDetail",
+    "pages/shop/shop"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,9 @@
+<!--pages/mine/mine.wxml-->
+<view>
+  <view class="v1" bindtap="goTo">
+    <view>意见反馈</view>
+    <view>
+      <image src="../img/ri.png" style="width:30rpx;height:30rpx;vertical-align:middle"></image>
+    </view>
+  </view>
+</view>

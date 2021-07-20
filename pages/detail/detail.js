@@ -9,7 +9,8 @@ Page({
       detailMsg:{},
       allRole:[],
       canIUseGetUserProfile:false,
-      share:{}
+      share:{},
+      show:true
   },
 
   /**
@@ -61,13 +62,24 @@ Page({
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
       let data=v.data;
-    
+     //console.log(v,9999999)
+      if(v.code==222){
+        wx.showToast({
+          title: '展示内容已丢失',
+          icon: 'error',
+          duration: 5000
+        })
+        this.setData({
+          show:false
+        })
+        return
+      }
       let url=wx.getStorageSync('currentUrl');
       if(data.shopLogoImg){
         let a=data.shopLogoImg.split(',');
         data.shopI=url+a[0]
       }else{
-        data.shopI='../img/no.png';
+        data.shopI='../img/lo.png';
       }
       if(data.storyCoverImg){
         let a=data.storyCoverImg.split(",");

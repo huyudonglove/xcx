@@ -1,0 +1,85 @@
+/* pages/orderDetail/orderDetail.wxss */
+.o{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.o1{
+  min-height: 10%;
+  border-bottom: 1px solid #dddddd;
+  padding: 0 35rpx;
+}
+.o2{
+  min-height: 20%;
+  border-bottom: 1px solid #dddddd;
+  padding: 20rpx;
+}
+.o3{
+  height: 40%;
+  padding: 20rpx;
+}
+.o11{
+  height: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+.o12{
+  height: 40%;
+  
+}
+.o21{
+  height: 20%;
+  display: flex;
+
+}
+.o31{
+  display: flex;
+  height: 60rpx;
+}
+.ot2{
+  float: right;
+  
+}
+.imgIcon{
+  position: relative;
+  width: 110rpx;
+  height: 50rpx;
+  left: 0;
+  z-index: 1;
+}
+.text{
+  position: relative;
+  top: -60rpx;
+  z-index: 10;
+  text-align: center;
+  color: white;
+}
+.tk{
+  position: fixed;
+  bottom: 0;
+  height: 10%;
+  border-top: 1px solid #ddd;
+  width: 100%;
+}
+.tf{
+  width: 260rpx;
+  text-align: right;
+  margin-right: 20rpx;
+}
+.adress{
+  color: rgb(203, 203, 203);
+  font-size: 22rpx;
+}
+.title{
+  font-size: 22rpx;
+  display: inline-block;
+}
+
+.bt{
+  background: rgb(247,133,32);
+  color: white;
+  margin-top: 10rpx;
+}
+.w{
+  width: 73%;
+}

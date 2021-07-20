@@ -11,6 +11,7 @@ App({
         call.getLogin({jsCode:res.code}).then(res=>{
           call.getAccount()
         });
+        
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
 
       }

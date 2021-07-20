@@ -98,15 +98,18 @@
   border-radius: 5% 5% 0 0;
 }
 .titleC{
-  width: 100%;
+  width: 90%;
   height: 80rpx;
-  font-size: 35rpx;
+  font-size: 20rpx;
   line-height: 80rpx;
   padding-left:20rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .timeC{
   height: 70rpx;
-  font-size: 22rpx;
+  font-size: 20rpx;
   color:#aaa;
   line-height: 70rpx;
   padding-left:10rpx;
@@ -117,6 +120,10 @@
   margin-left:10rpx;
   font-size:40rpx ;
   color:#FFFFFF;
+  max-width: 500rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .homeC{
   background:linear-gradient(to top right, #B30A05, #FF4643) ;
@@ -127,6 +134,9 @@
   color:#0A0A0A;
   line-height: 100rpx;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  vertical-align: baseline;
 }
 .allC{
   float: left;
@@ -161,6 +171,7 @@
   height: 100rpx;
   margin-left: 120rpx;
   margin-top: 12rpx;
+  font-size: 26rpx;
 }
 .i1{
   height: 100rpx;

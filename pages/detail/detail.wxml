@@ -1,5 +1,6 @@
 <!--pages/detail/detail.wxml-->
-<view class="detailC" >
+<view wx:if="{{show}}">
+  <view class="detailC" >
   <image src="{{detailMsg.sI}}" class="imgStory"></image>
   <!-- <button class="buttonC" size="mini">查看详情</button> -->
 </view>
@@ -9,7 +10,12 @@
   </view>
   <view class="de2">
     <view class="de2v de2v1" style="width:100rpx"> <image src="../img/r.png" class="imgIcon"></image><text style="color:#F8E290;">{{detailMsg.totalCount}}人</text></view>
-    <view class="de2v" style="width:200rpx;overflow:hidden;"><image src="../img/t.png" style="width:25rpx;height:25rpx;margin-right:6rpx"></image>{{detailMsg.playTime}}</view>
+    <view class="de2v" style="width:200rpx;word-wrap:normal;">
+      <image src="../img/t.png" style="width:25rpx;height:25rpx;margin-right:6rpx"></image>
+      <view class="time">
+        {{detailMsg.playTime}}
+      </view>
+    </view>
     <view class="de2v de2v3">价格：<text style="color:red;font-size:40rpx;">{{detailMsg.groupPrice}}元</text>/位</view>
   </view>
   <view class="de3">
@@ -17,14 +23,14 @@
       <view class="d1">
         <image src="{{detailMsg.shopI}}" class="imgShop"></image>
       </view>
-      <view style="float:left;margin-left:20rpx">{{detailMsg.shopName}}</view>
+      <view style="float:left;margin-left:20rpx" class="shopName">{{detailMsg.shopName}}</view>
       <view class="d2">
         <button data-phone="{{detailMsg.shopPhone}}" style="float:right;width:100rpx;background:white" open-type="share"><image src="../img/f.png" class="imgIcon2"></image></button>
         <view bindtap="callMe" data-index="{{detailMsg.shopPhone}}" style="float:right;margin-top:16rpx"><image src="../img/d.png" class="imgIcon2"></image></view>
       </view>   
     </view>
     <view>
-      <view class="address"><image src="../img/l.png" style="width:21rpx;height:23rpx;vertical-align:bottom;margin-right:12rpx"></image>{{detailMsg.shopAddress}}</view>
+      <view class="address"><image src="../img/l.png" style="width:21rpx;height:23rpx;margin-right:12rpx"></image>{{detailMsg.shopAddress}}</view>
     </view>
   </view>
 </view>
@@ -44,7 +50,7 @@
       </view>
       <view wx:if="{{allRole[0].type==1}}" class="hidd">
         <image src="{{allRole[0].avatarUrl}}" class="imgF"></image>
-        <text class="tec">{{allRole[0].nickName}}</text>
+        <view class="tec">{{allRole[0].nickName}}</view>
       </view>
     </view>
     <view class="t1">
@@ -57,7 +63,7 @@
       </view>
       <view wx:if="{{allRole[1].type==1}}" class="hidd">
         <image src="{{allRole[1].avatarUrl}}" class="imgF"></image>
-        <text class="tec">{{allRole[1].nickName}}</text>
+        <view class="tec">{{allRole[1].nickName}}</view>
       </view>
     </view>
     <view class="t1">
@@ -70,7 +76,7 @@
       </view>
       <view wx:if="{{allRole[2].type==1}}" class="hidd">
         <image src="{{allRole[2].avatarUrl}}" class="imgF"></image>
-        <text class="tec">{{allRole[2].nickName}}</text>
+        <view class="tec">{{allRole[2].nickName}}</view>
       </view>
     </view>
     <view class="t1">
@@ -83,7 +89,7 @@
       </view>
       <view wx:if="{{allRole[3].type==1}}" class="hidd">
         <image src="{{allRole[3].avatarUrl}}" class="imgF"></image>
-        <text class="tec">{{allRole[3].nickName}}</text>
+        <view class="tec">{{allRole[3].nickName}}</view>
       </view>
     </view>
   </view>
@@ -98,12 +104,13 @@
       </view>
       <view wx:if="{{allRole[4].type==1}}" class="hidd">
         <image src="{{allRole[4].avatarUrl}}" class="imgF"></image>
-        <text class="tec">{{allRole[4].nickName}}</text>
+        <view class="tec">{{allRole[4].nickName}}</view>
       </view>
     </view>
     <view class="de2vc">
       <image class="imgCen1" src="{{detailMsg.dI}}"></image>
-      <image src="../img/DM.png" class="imgCen2"></image>
+      <!-- <image src="../img/DM.png" class="imgCen2"></image> -->
+      <view class="dmName">{{detailMsg.dmName}}</view>
       <image src="../img/i.png" class="imgCen"></image>
     </view>
     <view class="i45" style="top:-280rpx;left:620rpx">
@@ -116,7 +123,7 @@
       </view>
       <view wx:if="{{allRole[5].type==1}}" class="hidd">
         <image src="{{allRole[5].avatarUrl}}" class="imgF"></image>
-        <text class="tec">{{allRole[5].nickName}}</text>
+        <view class="tec">{{allRole[5].nickName}}</view>
       </view>
     </view>
   </view>
@@ -131,7 +138,7 @@
       </view>
       <view wx:if="{{allRole[6].type==1}}" class="hidd">
         <image src="{{allRole[6].avatarUrl}}" class="imgF"></image>
-        <text class="tec">{{allRole[6].nickName}}</text>
+        <view class="tec">{{allRole[6].nickName}}</view>
       </view>
     </view>
     <view class="t1">
@@ -144,7 +151,7 @@
       </view>
       <view wx:if="{{allRole[7].type==1}}" class="hidd">
         <image src="{{allRole[7].avatarUrl}}" class="imgF"></image>
-        <text class="tec">{{allRole[7].nickName}}</text>
+        <view class="tec">{{allRole[7].nickName}}</view>
       </view>
     </view>
     <view class="t1">
@@ -157,7 +164,7 @@
       </view>
       <view wx:if="{{allRole[8].type==1}}" class="hidd">
         <image src="{{allRole[8].avatarUrl}}" class="imgF"></image>
-        <text class="tec">{{allRole[8].nickName}}</text>
+        <view class="tec">{{allRole[8].nickName}}</view>
       </view>
     </view>
     <view class="t1">
@@ -170,14 +177,14 @@
       </view>
       <view wx:if="{{allRole[9].type==1}}" class="hidd">
         <image src="{{allRole[9].avatarUrl}}" class="imgF"></image>
-        <text class="tec">{{allRole[9].nickName}}</text>
+        <view class="tec">{{allRole[9].nickName}}</view>
       </view>
     </view>
   </view>
 </view>
 <view class="vc2"></view>
 <view class="detail3">
-<text class="det">剧本详情</text> 
+<view class="det">剧本详情</view> 
   <view class="det1">{{detailMsg.storyRemarks}}</view>
 </view>
 <view class="vc3"></view>
@@ -189,9 +196,14 @@
   <text class="detail4v2">共{{detailMsg.boughtCount}}人</text>
   <button size="mini" class="detail4b1" bindtap="goToPay">去拼团</button>
 </view>
+</view>
+
 <view class='middle-box' wx:if="{{!hasUserInfo}}">
     <view class="boxH">
       <view class='title'>点击确认按钮，确认授权</view>
       <button class='btn'  bindtap='getUserProfile'>确认授权</button>
     </view>
+</view>
+<view class="kongbai" wx:if="{{!show}}">
+
 </view>

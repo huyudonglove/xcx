@@ -1,0 +1,9 @@
+/* pages/mine/mine.wxss */
+.v1{
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #dddddd;
+  padding: 10rpx 20rpx;
+  line-height: 100rpx;
+}

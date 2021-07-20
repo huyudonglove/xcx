@@ -42,11 +42,11 @@
 </view>
 <view class="6" wx:if="{{useGeshi}}">
   <view style="float:right;margin-right:20rpx;">
-    合计：<text style="color:red">￥{{(detail.groupPrice*100-useGeshi*1000)/100}}</text>
+    合计：<text style="color:red">￥{{(detail.groupPrice*1000-useGeshi*10000)/1000}}</text>
   </view>
 </view>
 <view class="pay4">
-  <view class="pay4v1">总金额：<text style="color:red;font-size:40rpx;">{{(detail.groupPrice*100-useGeshi*1000)/100}} 元</text></view>
+  <view class="pay4v1">总金额：<text style="color:red;font-size:40rpx;">{{(detail.groupPrice*1000-useGeshi*10000)/1000}} 元</text></view>
   <view class="pay4v2">
     <!-- <button  class="pay4b" bindtap="pay">提交订单</button> -->
     <button class="pay4b" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">提交订单</button>
@@ -80,7 +80,9 @@
   </view>
 </view>
 <mp-dialog title="鸽屎使用规则" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton" buttons="{{oneButton}}" mask-closable="{{false}}">
+        <view>使用条件</view>
+        <view>鸽屎支付不得超过每笔订单应付金额的50%。</view>
         <view>使用数量</view>
         <view>1.使用鸽屎数量为1000的整数倍；</view>
-        <view>2.1000鸽屎抵10元。</view>
+        <view>2.1000鸽屎抵10元。</view>      
 </mp-dialog>
